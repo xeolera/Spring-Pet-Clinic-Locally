@@ -1,4 +1,4 @@
-# Spring-Pet-Clinic-Locally
+# Bulletin Board
 Local server of Pet Clinic for future tests
 
 
