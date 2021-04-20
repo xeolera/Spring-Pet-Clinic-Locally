@@ -7,12 +7,12 @@ pipeline {
 				parallel(
 					a: {
 						dir("${env.WORKSPACE}/spring-petclinic-angular/static-content/"){
-							sh "java -jar ./rawhttp.jar serve . -p 4200"
+							sh "java -jar ./rawhttp.jar serve . -p 4200 &"
 							}
 					},
 					b: {
 						dir("${env.WORKSPACE}/spring-petclinic-rest/"){
-							sh "./mvwn"
+							sh "./mvnw &"
 						}
 					}
                 )
