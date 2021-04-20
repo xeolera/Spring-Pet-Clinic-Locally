@@ -6,12 +6,12 @@ pipeline {
             steps {
 				parallel(
 					a: {
-						dir("${env.WORKSPACE}/spring-petclinic-angular-master/static-content/"){
-							sh "python -m http.server 4200"
+						dir("${env.WORKSPACE}/spring-petclinic-angular/static-content/"){
+							sh "java -jar ./rawhttp.jar serve . -p 4200"
 							}
 					},
 					b: {
-						dir("${env.WORKSPACE}/spring-petclinic-rest-master/"){
+						dir("${env.WORKSPACE}/spring-petclinic-rest/"){
 							sh "./mvwn"
 						}
 					}
@@ -20,7 +20,7 @@ pipeline {
         }
 		stage('Close applications') {
 			steps {
-				sh "pkill python & pkill maven"
+				sh "pkill java & pkill maven"
 			}
 		}
     }
