@@ -1,4 +1,4 @@
-# Bulletin Board
+# ✨ Bulletin Board ✨
 Local server of Pet Clinic for future tests
 
 
