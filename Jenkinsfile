@@ -2,21 +2,23 @@ pipeline {
     agent any
     stages {
         
-         stage('Build') {
+         stage('Start webserver') {
             steps {
-                sh "mvn compile"
+				parallel(
+					a: {
+						sh "python -m spring-petclinic-angular-master/static-content/http.server 4200"
+					},
+					b: {
+						sh "maven spring-petclinic-rest-master/spring-boot:run"
+					}
+                )
             }
         }
-        stage('Test') {
-            steps {
-                sh "mvn test"
-            }
-            post {
-                always {
-                    junit '*/TEST.xml'
-                }
-            }
-        }
+		stage('Close applications') {
+			steps {
+				sh "pkill python & pkill maven"
+			}
+		}
     }
 }
         
