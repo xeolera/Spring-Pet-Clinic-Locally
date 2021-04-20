@@ -8,4 +8,4 @@ HELLO HERE IS A PLACE FOR THE COLLECTION OF THOUGHTS
 BEAUTIFUL 
 
 
-By Group D - Trevligt team, snyggt
+By Group D - Trevligt team, snyggt.
