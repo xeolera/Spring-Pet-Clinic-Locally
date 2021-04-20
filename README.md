@@ -7,6 +7,7 @@ HELLO HERE IS A PLACE FOR THE COLLECTION OF THOUGHTS
 
 BEAUTIFUL 
 
+Make "original" Jenkinsfile point to folders?? HOW
 
 ***
 Skickat till Vince 20/4
