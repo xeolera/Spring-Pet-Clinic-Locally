@@ -9,7 +9,7 @@ BEAUTIFUL
 ***
 ~ Problems and ideas ~
 
-Make "original" Jenkinsfile point to folders?? HOW
+Make "original" Jenkinsfile point to folders, HOW??
 
 ***
 Skickat till Vince 20/4
