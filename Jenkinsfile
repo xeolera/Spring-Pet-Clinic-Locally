@@ -6,10 +6,10 @@ pipeline {
             steps {
 				parallel(
 					a: {
-						sh "python -m spring-petclinic-angular-master/static-content/http.server 4200"
+						sh "cd spring-petclinic-angular-master/static-content/ & python -m http.server 4200"
 					},
 					b: {
-						sh "maven spring-petclinic-rest-master/spring-boot:run"
+						sh "mvnw spring-petclinic-rest-master/spring-boot:run"
 					}
                 )
             }
