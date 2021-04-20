@@ -12,7 +12,7 @@ pipeline {
 					},
 					b: {
 						dir("${env.WORKSPACE}/spring-petclinic-rest/"){
-							bat "mvnw.cmd &"
+							bat "mvnw spring-boot:run &"
 						}
 					}
                 )
