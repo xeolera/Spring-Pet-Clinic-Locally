@@ -6,6 +6,8 @@ Local server of Pet Clinic for future tests
 HELLO HERE IS A PLACE FOR THE COLLECTION OF THOUGHTS
 
 BEAUTIFUL 
+***
+~ Problems and ideas ~
 
 Make "original" Jenkinsfile point to folders?? HOW
 
