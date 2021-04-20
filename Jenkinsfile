@@ -2,8 +2,9 @@ pipeline {
     agent any
     stages {
         
-         stage('Start webserver') {
+         stage('Build') {
             steps {
+<<<<<<< HEAD
 				parallel(
 					a: {
 						dir("${env.WORKSPACE}/spring-petclinic-angular/static-content/"){
@@ -16,6 +17,19 @@ pipeline {
 						}
 					}
                 )
+=======
+                sh "mvn compile"
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "mvn test"
+            }
+            post {
+                always {
+                    junit '*/TEST.xml'
+                }
+>>>>>>> parent of 6f8f642 (Update Jenkinsfile)
             }
         }
     }
