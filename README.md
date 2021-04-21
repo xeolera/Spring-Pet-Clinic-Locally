@@ -12,7 +12,13 @@ BEAUTIFUL
 Make "original" Jenkinsfile point to folders, HOW??
 
 ***
-Skickat till Vince 20/4
+Svar från Vincent på nedanstående frågor:
+I jenkins pipelinescript kan man använda dir('min/mapp/struktur') för att byta directory. Man kan även använda ett simpelt 'sh cd min/mapp/struktur'.
+
+Det skall finnas instruktioner för webhooks i Jenkinsövningen. Har ni testat att följa dem?
+
+
+Skickat till Vincent 20/4
 Hej Vincent, lite teknikfrågor från grupp D!
 
 Nu tror vi att vi har fått vårt repo att fungera mot Jenkins men vi vet inte hur får vi jenkinsfilen att se in djupare i de andra mapparna. Vi lyckas inte bygga nämligen.  
