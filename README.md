@@ -18,6 +18,7 @@ I jenkins pipelinescript kan man använda dir('min/mapp/struktur') för att byta
 Det skall finnas instruktioner för webhooks i Jenkinsövningen. Har ni testat att följa dem?
 
 -translation-
+
 Answer from Vincent regarding questions below: In jenkins pipelinescript you can use dir('my/folder/structure') to change directory. You can also use a simple 'sh cd my/folder/structure'
 
 There are instructions for webhooks in the Jenkins excersice (on ITHS). Try following it? 
