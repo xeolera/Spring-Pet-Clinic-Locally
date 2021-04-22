@@ -15,7 +15,7 @@
   "paths": {
     "/user": {
       "get": {
-        "summary": "Details about a user",
+        "summary": "Get owners request",
         "operationId": "listUser",
         "tags": [
           "user"
