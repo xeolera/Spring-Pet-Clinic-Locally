@@ -1,21 +1,11 @@
 pipeline {
     agent any
     stages {
-         stage('Build') {
+         stage('Build API') {
             steps {
-                sh "mvn compile"
+                sh "nohup mvn spring-boot:run &"
+                sleep (20)
             }
-        }
-        stage('Test') {
-            steps {
-                sh "mvn test"
-            }
-            post {
-                always {
-                    junit '*/TEST.xml'
-                }
-            }
-        }
+         }
     }
 }
-        
