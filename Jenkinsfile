@@ -13,8 +13,10 @@ pipeline {
                 sleep(3)
                   }
            }
+      
         stage('Postman testing') {
             steps {
+               sh npm install -g newman
                sh 'newman run PetMain.postman_collection.json --environment PetE.postman_environment.json --reporters junit'
             }
             post {
