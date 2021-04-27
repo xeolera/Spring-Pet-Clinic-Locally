@@ -16,6 +16,7 @@ pipeline {
       
          stage('Postman testing') {
             steps {   
+                sh 'npm install'
                sh 'npm run PetMain.postman_collection.json -e PetE.postman_environment.json'
             }
             post {
