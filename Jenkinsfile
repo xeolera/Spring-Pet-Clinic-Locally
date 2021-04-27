@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Build API') {
            steps {
+               sh "cd */workspace/Single_Repo_Jenkins/spring-petclinic-rest"
                sh "nohup mvn spring-boot:run &"
                 sleep(20)
            }
