@@ -1,10 +1,10 @@
 *** Setting ***
 *** Setting ***
 Documentation                   This is some basic infor about the whole test suite
-Library                         SeleniumLibrary
-Library                         DateTime
-Test Setup                      Begin Web Test
-Test Teardown                   End Web Test
+Resource                           ../Resources/keywords_owner.robot
+Library                            SeleniumLibrary
+Test Setup                         Begin Web Test
+Test Teardown                      End Web Test
 *** Variables ***
 ${URL}                          http://localhost:4200/
 ${BROWSER}                      Chrome
@@ -29,11 +29,6 @@ ${Owners}                       Owners
 
 
 *** Test Cases ***
-Begin Web Test
-    Open browser                            about:blank   ${BROWSER}
-    Maximize Browser Window
-    Go to                                                  ${URL}
-
 User can add a new Owner
       [Documentation]   This test adds a new owner with AddNew
       [Tags]            Add a new owner
