@@ -1,0 +1,1183 @@
+{
+	"info": {
+		"_postman_id": "9e366a4e-a1ce-410c-bd86-409dcce2ae0e",
+		"name": "PetMainBound",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add second pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check name\", () => pm.expect(jsonData.name).to.equal(\"Sally\"));\r",
+							"\r",
+							"pm.environment.set(\"secondPetID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"Sally\",\r\n  \"birthDate\": \"2021/04/22\",\r\n  \"type\": {\r\n    \"id\": 1,\r\n    \"name\": \"cat\"\r\n  },\r\n  \"owner\": {\r\n    \"id\": {{ownerID}},\r\n    \"firstName\": \"Ellen\",\r\n    \"lastName\": \"Krazze\",\r\n    \"address\": \"Gatan\",\r\n    \"city\": \"Staden\",\r\n    \"telephone\": \"0770000000\",\r\n    \"pets\": [] \r\n  },\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get second new pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test('Check name', () => pm.expect(jsonData.name).to.equal(\"Sally\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets/{{secondPetID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets",
+						"{{secondPetID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add identical owner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"firstName\": \"Ellen\",\r\n  \"lastName\": \"Krazze\",\r\n  \"address\": \"Gatan\",\r\n  \"city\": \"Staden\",\r\n  \"telephone\": \"0770000000\",\r\n  \"pets\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with same name but different number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(\"Ellen\"));\r",
+							"pm.test(\"Check lastName\", () => pm.expect(jsonData.lastName).to.equal(\"Krazze\"));\r",
+							"pm.test(\"Check telephone number\", () => pm.expect(jsonData.telephone).to.equal(\"0771234000\"));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"firstName\": \"Ellen\",\r\n  \"lastName\": \"Krazze\",\r\n  \"address\": \"Gatan\",\r\n  \"city\": \"Staden\",\r\n  \"telephone\": \"0771234000\",\r\n  \"pets\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with same number and lastname but different firstname",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(\"Simon\"));\r",
+							"pm.test(\"Check lastName\", () => pm.expect(jsonData.lastName).to.equal(\"Krazze\"));\r",
+							"pm.test(\"Check telephone number\", () => pm.expect(jsonData.telephone).to.equal(\"0770000000\"));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"firstName\": \"Simon\",\r\n  \"lastName\": \"Krazze\",\r\n  \"address\": \"Gatan\",\r\n  \"city\": \"Staden\",\r\n  \"telephone\": \"0770000000\",\r\n  \"pets\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner without first name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": null,\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner without last name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": null,\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner without address info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": null,\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner without city info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": null,\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner without telephone number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": null,\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with first name \"123\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"firstName\": \"123\",\r\n  \"lastName\": \"Krazze\",\r\n  \"address\": \"Gatan\",\r\n  \"city\": \"Staden\",\r\n  \"telephone\": \"0770000000\",\r\n  \"pets\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with last name \"123\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"123\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with address \"123\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"123\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with city \"123\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"123\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with telephone number \"0\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with telephone number \"abcdefghij\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"abcdefghij\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 1st identical pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check name\", () => pm.expect(jsonData.name).to.equal(\"Bo\"));\r",
+							"\r",
+							"pm.environment.set(\"petID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"Bo\",\r\n  \"birthDate\": \"2021/04/22\",\r\n  \"type\": {\r\n    \"id\": 1,\r\n    \"name\": \"cat\"\r\n  },\r\n  \"owner\": {\r\n    \"id\": {{ownerID}},\r\n    \"firstName\": \"Ellen\",\r\n    \"lastName\": \"Krazze\",\r\n    \"address\": \"Gatan\",\r\n    \"city\": \"Staden\",\r\n    \"telephone\": \"0770000000\",\r\n    \"pets\": [] \r\n  },\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2nd  identical pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check name\", () => pm.expect(jsonData.name).to.equal(\"Bo\"));\r",
+							"\r",
+							"pm.environment.set(\"secondPetID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"Bo\",\r\n  \"birthDate\": \"2021/04/22\",\r\n  \"type\": {\r\n    \"id\": 1,\r\n    \"name\": \"cat\"\r\n  },\r\n  \"owner\": {\r\n    \"id\": {{ownerID}},\r\n    \"firstName\": \"Ellen\",\r\n    \"lastName\": \"Krazze\",\r\n    \"address\": \"Gatan\",\r\n    \"city\": \"Staden\",\r\n    \"telephone\": \"0770000000\",\r\n    \"pets\": [] \r\n  },\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get new pets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.text();",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test('Check ID', () => pm.expect(jsonData).to.contain(pm.environment.get(\"petID\")));",
+							"pm.test('Check ID', () => pm.expect(jsonData).to.contain(pm.environment.get(\"secondPetID\")));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with first name \"A\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"A\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with last name \"A\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"A\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with address \"A\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"A\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with city \"A\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"A\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with first name \"@&#\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"@&#\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with last name \"@&#\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"@&#\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with city \"@&#\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"@&#\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with address \"@&#\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"@&#\",\n  \"city\": \"Staden\",\n  \"telephone\": \"0770000000\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add owner with telephone number \"@&#\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"Ellen\",\n  \"lastName\": \"Krazze\",\n  \"address\": \"Gatan\",\n  \"city\": \"Staden\",\n  \"telephone\": \"@&#\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
