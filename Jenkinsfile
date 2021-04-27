@@ -13,12 +13,17 @@ pipeline {
                 sleep(3)
                   }
            }
+        
+         stage('Build') {
+            steps {
+                nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+                    sh 'npm config ls'
+                }
+            }
+        }
       
-        stage('Postman testing') {
+         stage('Postman testing') {
             steps {   
-               sh 'npm install'
-               sh 'npm run newman-tests'
-                
                sh 'newman run PetMain.postman_collection.json -e PetE.postman_environment.json'
             }
             post {
