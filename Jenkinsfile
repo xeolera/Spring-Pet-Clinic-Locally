@@ -15,16 +15,6 @@ pipeline {
                   }
            }
 
-         stage('Postman testing') {
-            steps {
-               sh 'newman run PetMain.postman_collection.json --environment PetE.postman_environment.json'
-            }
-            post {
-                always {
-                    junit '*/Results.xml'
-                }
-            }
-        }
 
         stage('Robot Framework System tests with Selenium') {
             steps {
