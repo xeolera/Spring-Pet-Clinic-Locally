@@ -11,7 +11,7 @@ pipeline {
          stage('Build Website') {
             steps {
                sh 'nohup python -m http.server 4200 &'
-                sleep(3)
+                sleep(20)
                   }
            }
 
