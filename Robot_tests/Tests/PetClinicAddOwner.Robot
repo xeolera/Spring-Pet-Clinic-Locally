@@ -3,7 +3,7 @@
 Documentation                   This is some basic infor about the whole test suite
 Resource                           ../Resources/keywords_owner.robot
 Library                            SeleniumLibrary
-Test Setup                         Begin Web Test
+Test Setup                         Open browser                 ${URL}    ${BROWSER}
 Test Teardown                      End Web Test
 *** Variables ***
 ${URL}                          http://localhost:4200/
