@@ -16,7 +16,6 @@ pipeline {
       
          stage('Postman testing') {
             steps {   
-                sh 'cd C:/Users/halip/.jenkins/workspace/Single_Repo_Jenkins/API_test' 
                sh 'npm run PetMain.postman_collection.json -e PetE.postman_environment.json'
             }
             post {
