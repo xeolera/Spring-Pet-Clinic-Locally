@@ -20,7 +20,7 @@ pipeline {
             steps {
                  sh 'cd Robot_tests robot --variable  BROWSER:headlesschrome -d Results Tests'
 
-
+                }
 
             post {
                 always {
