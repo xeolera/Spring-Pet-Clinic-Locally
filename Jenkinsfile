@@ -4,7 +4,7 @@ pipeline {
         stage('Build API') {
            steps {
                sh "nohup mvn spring-boot:run &"
-             
+                sleep(20)
            }
         }
          stage('Build Website') {
