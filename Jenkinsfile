@@ -16,7 +16,7 @@ pipeline {
       
          stage('Postman testing') {
             steps {   
-                sh 'cd Spring-Pet-Clinic-Locally/API_test/' 
+                sh 'cd Spring-Pet-Clinic-Locally/API_test' 
                sh 'newman run PetMain.postman_collection.json -e PetE.postman_environment.json'
             }
             post {
