@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build API') {
            steps {
-               sh "git clone https://github.com/spring-petclinic/spring-petclinic-rest.git && cd spring-petclinic-rest && mvn spring-boot:run &"
+               sh "cd spring-petclinic-rest && mvn spring-boot:run &"
                 sleep(20)
            }
         }
