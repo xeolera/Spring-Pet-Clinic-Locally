@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build API') {
            steps {
-               sh "cd spring-petclinic-rest && mvn spring-boot:run &"
-              
+               sh "cd spring-petclinic-rest && nohup mvn spring-boot:run &"
+               sleep(20)
            }
         }
          stage('Build Website') {
@@ -16,7 +16,7 @@ pipeline {
       
          stage('Postman testing') {
             steps {   
-               sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json'
+               sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters junit'
             }
             post {
                 always {
