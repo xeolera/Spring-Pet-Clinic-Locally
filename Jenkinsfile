@@ -16,6 +16,8 @@ pipeline {
       
          stage('Postman testing') {
             steps {   
+               dir("API_test")
+               sh 'pwd'
                sh 'newman run PetMain.postman_collection.json --environment PetE.postman_environment.json'
             }
             post {
