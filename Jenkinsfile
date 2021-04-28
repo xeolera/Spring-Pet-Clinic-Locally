@@ -3,28 +3,27 @@ pipeline {
     stages {
         stage('Build API') {
            steps {
+               sh "cd spring-petclinic-rest"
                sh "nohup mvn spring-boot:run &"
                 sleep(20)
            }
         }
          stage('Build Website') {
             steps {
-               sh 'nohup python -m http.server 4200 &'   
+               sh sh 'cd spring-petclinic-angular/static-content && curl https://jcenter.bintray.com/com/athaydes/rawhttp/rawhttp-cli/1.0/rawhttp-cli-1.0-all.jar -o rawhttp.jar && nohup java -jar ./rawhttp.jar serve . -p 4200 &'  
                 sleep(3)
                   }
            }
       
          stage('Postman testing') {
             steps {   
-               dir("API_test")
-               sh 'pwd'
                sh 'newman run PetMain.postman_collection.json --environment PetE.postman_environment.json'
             }
-            post {
-                always {
-                    junit '*/Results.xml'
-                }
-            }
+            //post {
+            //    always {
+            //        junit '*/Results.xml'
+            //    }
+            //}
         }
         
         stage('Robot Framework System tests with Selenium') {
