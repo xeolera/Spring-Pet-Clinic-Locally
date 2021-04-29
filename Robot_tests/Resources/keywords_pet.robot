@@ -5,7 +5,7 @@ Library   SeleniumLibrary
 
 *** Keywords ***
 Suite settings
-  set selenium speed        3 seconds
+  Set Selenium Implicit Wait  5 seconds
 
 
 Begin Web Test
