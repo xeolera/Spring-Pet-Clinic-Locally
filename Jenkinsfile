@@ -16,11 +16,11 @@ pipeline {
       
          stage('Postman testing') {
             steps {   
-               sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json'
+               sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters cli, junit'
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: '**/TEST*.xml'
+                    junit '**/*.xml'
                 }
             }
         }
