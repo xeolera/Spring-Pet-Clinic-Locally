@@ -36,6 +36,7 @@ And user locates the “owner list”-page
   wait until page contains    Owners
 
 And user clicks on the chosen owner
+  Wait Until Page Contains Element    xpath://table/tbody/tr[1]/td[1]/a
   click element               xpath://table/tbody/tr[1]/td[1]/a
   wait until page contains    Owner Information
 And user clicks on “add new pet”
