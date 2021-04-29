@@ -19,11 +19,10 @@ pipeline {
                 script {
                     try {
                        sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters junit'
-                    } catch (err) {
-                        echo err.getMessage()
+                    } catch (Exception e) {
+                        echo "Tests are failing, continue pipeline..."
                     }
                 }
-                echo currentBuild.result
             }
             post {
                 always {
