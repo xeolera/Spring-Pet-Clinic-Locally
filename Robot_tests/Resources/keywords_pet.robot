@@ -64,6 +64,7 @@ When the user adds a pet with numbers in the name field
 
 Then the pet should be added
    Click element                    xpath://*[@id="pettype"]/div[2]/div/button
+   wait until page does not contain   New Pet Type
    ${pettype}=                      Get Value  xpath://*[@id="pettypes"]/tbody/tr[last()]/td/input
    Should be equal                  ${pettype}    ${Petname2}
 End Web Test
