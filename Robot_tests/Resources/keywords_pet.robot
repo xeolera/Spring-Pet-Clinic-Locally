@@ -48,7 +48,7 @@ And user input information to the pet
 When user clicks on “Save pet”
   click button                xpath://html/body/app-root/app-pet-add/div/div/form/div[6]/div/button[2]
 Then the user will have succesfully added a new pet to the chosen owner
-  Wait until element contains   xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/dd[1]   Micke
+  Wait until page contains    Micke
 
 
 
