@@ -36,7 +36,7 @@ And user locates the “owner list”-page
   wait until page contains    Owners
 
 And user clicks on the chosen owner
-  click element               xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  click element               xpath://table/tbody/tr[1]/td[1]/a[@href="/petclinic/owners/1"]
   wait until page contains    Owner Information
 And user clicks on “add new pet”
   click button                xpath://html/body/app-root/app-owner-detail/div/div/button[3]
