@@ -32,8 +32,15 @@ pipeline {
             }
         }
          stage('Postman testing 2') {
-            steps {   
-               sh 'newman run API_test/PetMainBound.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters junit'
+            steps {
+                script {
+                    try {
+                        sh 'newman run API_test/PetMainBound.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters junit'
+                        } catch (err) {
+                        echo err.getMessage()
+                    }
+                }
+                echo currentBuild.result
             }
             post {
                 always {
