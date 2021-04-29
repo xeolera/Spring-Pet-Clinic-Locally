@@ -764,7 +764,7 @@
 			"response": []
 		},
 		{
-			"name": "Get new pets",
+			"name": "Get new identical pets",
 			"event": [
 				{
 					"listen": "test",
@@ -791,6 +791,47 @@
 				"body": {
 					"mode": "raw",
 					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pet with birthday in the future",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 403\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"name\": \"Future-Bo\",\n  \"birthDate\": \"2021/08/22\",\n  \"type\": {\n    \"id\": 1,\n    \"name\": \"cat\"\n  },\n  \"owner\": {\n    \"id\": {{ownerID}},\n    \"firstName\": \"Ellen\",\n    \"lastName\": \"Krazze\",\n    \"address\": \"Gatan\",\n    \"city\": \"Staden\",\n    \"telephone\": \"0770000000\",\n    \"pets\": [] \n  },\n  \"visits\": []\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1174,6 +1215,125 @@
 					"path": [
 						"api",
 						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pet without owner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", () => pm.expect(responseCode.code).to.equal(403));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"Bo\",\r\n  \"birthDate\": \"2021/04/22\",\r\n  \"type\": {\r\n    \"id\": 2,\r\n    \"name\": \"dog\"\r\n  },\r\n  \"owner\": null,\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pet with owner+null values",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"Bo\",\r\n  \"birthDate\": \"2021/04/22\",\r\n  \"type\": {\r\n    \"id\": 1,\r\n    \"name\": \"cat\"\r\n  },\r\n  \"owner\": {\r\n    \"id\": null,\r\n    \"firstName\": null,\r\n    \"lastName\": null,\r\n    \"address\": null,\r\n    \"city\": null,\r\n    \"telephone\": null,\r\n    \"pets\": [] \r\n  },\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pet with owner that does not exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403 - Forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"Bo\",\r\n  \"birthDate\": \"2021/04/22\",\r\n  \"type\": {\r\n    \"id\": 1,\r\n    \"name\": \"cat\"\r\n  },\r\n  \"owner\": {\r\n    \"id\": 107,\r\n    \"firstName\": \"Jeff\",\r\n    \"lastName\": \"Unknown\",\r\n    \"address\": \"The Street\",\r\n    \"city\": \"The city\",\r\n    \"telephone\": \"0700000333\",\r\n    \"pets\": [] \r\n  },\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
 					]
 				}
 			},
