@@ -29,11 +29,6 @@ pipeline {
                     }
                 }
             }
-            post {
-                always {
-                    junit '**/*.xml'
-                }
-            }
         }
         
         stage('Robot Framework System tests with Selenium') {
