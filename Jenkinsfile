@@ -12,7 +12,7 @@ pipeline {
             steps {   
                script {
                     try {
-                       sh 'newman run API_test/ITERATION.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters junit --iteration-count 10'
+                       sh 'newman run API_test/ITERATION.postman_collection.json --iteration-count 10 --environment API_test/PetE.postman_environment.json --reporters junit'
                     } catch (Exception e) {
                         echo "Tests are failing, continue pipeline..."
                     }
