@@ -4,7 +4,6 @@
 Begin Web Test
     Open browser                     about:blank             ${BROWSER}
     Set selenium timeout             10
-    Set selenium speed               1
 
 Go to Web Page
     Load Page
@@ -24,6 +23,7 @@ Click Menu_petType
 Verify Page_petType Loaded
     Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/h2
     Page Should Contain                     Pet Types
+    Sleep                                   1
 
 Click Button_petType_add
     Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
@@ -31,13 +31,19 @@ Click Button_petType_add
 Verify Inputfield_newPetType
     Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
     Page Should Contain                     New Pet Type
+    Sleep                               1
 
 Input New Pet Type Text
     [Arguments]                         ${SEARCH_TERM}
     Input Text                          id:name             ${SEARCH_TERM}
+    Sleep                               1
 
-Click BUtton_PetType_save
-    Click Element                           xpath:///*[@id="pettype"]/div[2]/div/button
+Click Button_PetType_save
+    Click Element                       xpath://html/body/app-root/app-pettype-list/div/div/div[1]/app-pettype-add/div/div/form/div[2]/div/button
+    Sleep                               1
+
+Click Element Enter
+    Click Element                       xpath://*[@id="name"]               ENTER
 
 End Web Test
     Close Browser
