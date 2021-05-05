@@ -22,17 +22,6 @@ pipeline {
                     } catch (Exception e) {
                         echo "Tests are failing, continue pipeline..."
                     }
-                }
-            }
-            post {
-                always {
-                    junit '**/*.xml'
-                }
-            }
-        }
-         stage('Postman testing 2') {
-            steps {
-                script {
                     try {
                         sh 'newman run API_test/PetMainBound.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters junit'
                         } catch (Exception e) {
@@ -42,7 +31,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '***/*.xml'
+                    junit '**/*.xml'
                 }
             }
         }
