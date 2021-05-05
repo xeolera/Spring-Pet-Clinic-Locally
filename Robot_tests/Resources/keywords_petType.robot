@@ -23,7 +23,7 @@ Click Menu_petType
 Verify Page_petType Loaded
     Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/h2
     Page Should Contain                     Pet Types
-    Sleep                                   1
+
 
 Click Button_petType_add
     Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
@@ -31,12 +31,12 @@ Click Button_petType_add
 Verify Inputfield_newPetType
     Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
     Page Should Contain                     New Pet Type
-    Sleep                               1
+
 
 Input New Pet Type Text
     [Arguments]                         ${SEARCH_TERM}
     Input Text                          id:name             ${SEARCH_TERM}
-    Sleep                               1
+
 
 Click Button_PetType_save
     Click Element                       xpath://html/body/app-root/app-pettype-list/div/div/div[1]/app-pettype-add/div/div/form/div[2]/div/button
