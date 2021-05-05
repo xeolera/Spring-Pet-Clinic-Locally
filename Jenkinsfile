@@ -12,13 +12,17 @@ pipeline {
             steps {   
                script {
                     try {
-                       sh 'newman run API_test/ITERATION.postman_collection.json --iteration-count 10 --environment API_test/PetE.postman_environment.json --verbose'
+                       sh 'newman run API_test/ITERATION.postman_collection.json --iteration-count 10 --environment API_test/PetE.postman_environment.json --reporters junit --verbose'
                     } catch (Exception e) {
                         echo "Tests are failing, continue pipeline..."
                     }
                 }
             }
-            
+            post {
+                always {
+                    junit '**/*.xml'
+                }
+            }
         }        
     }
 }
