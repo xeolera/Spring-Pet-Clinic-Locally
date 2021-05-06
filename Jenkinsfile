@@ -18,12 +18,12 @@ pipeline {
             steps { 
                 script {
                     try {
-                       sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters cli,junit --reporter-junit-export "newman/myreport.xml'
+                       sh 'newman run API_test/PetMain.postman_collection.json --environment API_test/PetE.postman_environment.json --reporters cli'
                     } catch (Exception e) {
                         echo "Tests are failing, continue pipeline..."
                     } 
                     try {
-                        sh 'newman run API_test/ITERATION.postman_collection.json --iteration-count 10 --environment API_test/PetE.postman_environment.json --verbose --reporters cli,junit --reporter-junit-export "newman/myreport.xml'
+                        sh 'newman run API_test/ITERATION.postman_collection.json --iteration-count 10 --environment API_test/PetE.postman_environment.json --verbose --reporters cli'
                         } catch (Exception e) {
                         echo "Tests are failing, continue pipeline..."
                     }
