@@ -13,8 +13,8 @@ Load Page
     Go to                           ${URL}
 
 Verify Page Loaded
-    ${LINK_TEXT}                    Get Title
-    Should Be Equal                 ${LINK_TEXT}      SpringPetclinicAngular
+    ${link_text}                    Get Title
+    Should Be Equal                 ${link_text}      SpringPetclinicAngular
     Page Should Contain             Welcome to Petclinic
 
 Click Menu_petType
@@ -34,13 +34,11 @@ Verify Inputfield_newPetType
 
 
 Input New Pet Type Text
-    [Arguments]                         ${SEARCH_TERM}
-    Input Text                          id:name             ${SEARCH_TERM}
-
+    [Arguments]                         ${search_term}
+    Input Text                          id:name             ${search_term}
 
 Click Button_PetType_save
     Click Element                       xpath://html/body/app-root/app-pettype-list/div/div/div[1]/app-pettype-add/div/div/form/div[2]/div/button
-    Sleep                               1
 
 Click Element Enter
     Click Element                       xpath://*[@id="name"]               ENTER
