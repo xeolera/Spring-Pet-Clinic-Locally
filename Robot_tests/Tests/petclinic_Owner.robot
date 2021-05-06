@@ -40,6 +40,6 @@ User can access website, navigate to owner-list and also refresh page.
 User can access website, and navigate to owner-list from homepage (Gherkins Syntax).
     [Tags]                          TC_4
     GIVEN that user has access to the web page
-    AND user ctlicks on the menu "Owners"
+    AND user clicks on the menu "Owners"
     WHEN user clicks on menu option "All"
-    THEN user will recieve the lis of all current owners.
+    THEN user will recieve the list of all current owners.

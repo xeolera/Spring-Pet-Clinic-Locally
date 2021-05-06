@@ -8,38 +8,34 @@ Test Teardown                End Web Test
 *** Variables ***
 ${BROWSER}      chrome
 ${URL}          http://localhost:4200/
+${Petname1}     Häst
+${Petname2}     77383
 
 
 *** Test Cases ***
 
-Access website
-    [Documentation]             Test for adding a new pet
-    [Tags]                      Access_test1
-    Set Selenium Speed          0
-    #Test website connection
-    Wait until page contains        SpringPetclinicAngular
-    Click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[4]/a/span[2]
-    click element                   xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
-    input text                      xpath://*[@id="name"]   Ko
-    click element                   xpath://*[@id="pettype"]/div[2]/div/button
 
-Gherkin
-  [Documentation]    Test 2 gherkin
-  [Tags]             2
-  Given when user has access to the web page
-  When a user adds a pet
-  And user clicks on “Save pet”
+Test to add a new pet
+  [Documentation]    Test 1 to add new pet
+  [Tags]             test 1
+
+  Given when user has access to the web page and pettype exists
+  And user locates the “owner list”-page
+  And user clicks on the chosen owner
+  And user clicks on “add new pet”
+  And user input information to the pet
+  When user clicks on “Save pet”
+  Then the user will have succesfully added a new pet to the chosen owner
 
 
 
-Test varabiels as input for name
 
-    [Documentation]             Test for adding a new pet with varabiels
-    [Tags]                      Access_test2
-    Set Selenium Speed          0
-    #Test website connection
-    Wait until page contains        SpringPetclinicAngular
-    Click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[4]/a/span[2]
-    click element                   xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
-    input text                      xpath://*[@id="name"]   87348743
-    click element                   xpath://*[@id="pettype"]/div[2]/div/button
+Test to add a pet with numbers instead of letters
+
+   [Documentation]     Test adding pet with numbers as name
+   [Tags]              Test2
+
+    Given a user is on the landing page
+    When the user adds a pet with numbers in the name field
+    Then the pet should be added
+
