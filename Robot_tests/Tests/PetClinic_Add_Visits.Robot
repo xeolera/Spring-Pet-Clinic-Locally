@@ -1,7 +1,7 @@
 *** Setting ***
 *** Setting ***
 Documentation                   This is some basic infor about the whole test suite
-Resource                           ../Resources/keyword_visits.robot
+Resource                           ../Resources/keyword_addvisits.robot
 Library                            SeleniumLibrary
 Test Setup                         Open browser                 ${URL}    ${BROWSER}
 Test Teardown                      End Web Test
