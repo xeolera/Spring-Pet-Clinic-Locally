@@ -18,7 +18,11 @@ pipeline {
                     }
                 }
             }
-       
+             post {
+                 always {
+                     '**/*.xml'
+                 }
+             }
         }        
     }
 }
