@@ -109,7 +109,45 @@ Then changes should reflect in "Owners" list
   click button                    xpath://html/body/app-root/app-owner-edit/div/div/form/div[7]/div/button[2]
   wait until page contains        Owner Information
   #__________________________________________________________________________________________________
+# Test update owner with special signs in name
+Given that user has access to the "petclinic" site
 
+  Wait Until Page Contains        SpringPetclinicAngular
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  wait until element is visible   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]
+  wait until page contains element        xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  wait until page contains        Owner Information
+When user changes owner information with special signs and saves
+  click button                    xpath://html/body/app-root/app-owner-detail/div/div/button[2]
+  wait until page contains        Update Owner
+  input text                      xpath://*[@id="firstName"]    ¤Johan¤
+  input text                      xpath://*[@id="lastName"]     !Svensson!
+  input text                      xpath://*[@id="address"]      Järntorgetsgatan 22
+  input text                      xpath://*[@id="city"]         Göteborg
+  input text                      xpath://*[@id="telephone"]    0311111111
+  click button                    xpath://html/body/app-root/app-owner-edit/div/div/form/div[7]/div/button[2]
+  wait until page contains        Owner Information
+Then changes should reflect in the "Owners" list
+  click button                    xpath://html/body/app-root/app-owner-detail/div/div/button[1]
+  wait until page contains element        xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  element should contain          xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a  ¤Johan¤ !Svensson!
+  element should contain          xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[2]     Järntorgetsgatan 22
+  element should contain          xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[3]     Göteborg
+  element should contain          xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[4]     0311111111
+   ## Teardown
+  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  wait until page contains        Owner Information
+  click button                    xpath://html/body/app-root/app-owner-detail/div/div/button[2]
+  wait until page contains        Update Owner
+  input text                      xpath://*[@id="firstName"]    George
+  input text                      xpath://*[@id="lastName"]     Franklin
+  input text                      xpath://*[@id="address"]      110 W. Liberty St.
+  input text                      xpath://*[@id="city"]         New york
+  input text                      xpath://*[@id="telephone"]    6085551023
+  click button                    xpath://html/body/app-root/app-owner-edit/div/div/form/div[7]/div/button[2]
+  wait until page contains        Owner Information
 
 
 End Web Test

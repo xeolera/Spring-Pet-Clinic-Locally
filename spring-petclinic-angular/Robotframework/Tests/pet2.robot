@@ -18,6 +18,14 @@ Test to change owner information
   Given that user has access to "petclinic" site
   When user changes owner information and saves
   Then changes should reflect in "Owners" list
+#__________________________________________________
 
+Test to change owner information with special signs
+  [Documentation]    Edit owner information with special signs
+  [Tags]             Edit owner
+
+  Given that user has access to the "petclinic" site
+  When user changes owner information with special signs and saves
+  Then changes should reflect in the "Owners" list
 
 
