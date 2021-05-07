@@ -3,7 +3,6 @@
 Begin Web Test
     Open browser                     ${URL}    ${BROWSER}
     Set selenium timeout             5
-    Set selenium speed               1
 
 Given User on the Infotiv PetClinic page
      Wait until Page Contains          Welcome to Petclinic
@@ -31,8 +30,10 @@ Then System shows the added visits
 And Click on Delete button for visits
      Wait Until Page Contains Element    xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[2]/app-visit-list/table/tr/td[1]
      click Element                       xpath=(//button[@class="btn btn-default"])[8]
+
 Then System should deleted visits
      Wait until Page Contains            xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[2]/app-visit-list/table/thead/tr/th[1]
+
 End Web Test
    Close All Browsers
 
