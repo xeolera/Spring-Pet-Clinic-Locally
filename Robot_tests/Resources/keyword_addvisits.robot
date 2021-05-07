@@ -28,12 +28,11 @@ Then System shows the added visits
      page should contain                 Pets and Visits
 
 And Click on Delete button for visits
-     Wait Until Page Contains Element    xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[2]/app-visit-list/table/tr/td[1]
+     Wait Until Page Contains            I want to visit
      click Element                       xpath=(//button[@class="btn btn-default"])[8]
 
 Then System should deleted visits
-     Wait until Page Contains            xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[2]/app-visit-list/table/thead/tr/th[1]
-
+     Wait until Page Contains            Owner Information
 End Web Test
    Close All Browsers
 
