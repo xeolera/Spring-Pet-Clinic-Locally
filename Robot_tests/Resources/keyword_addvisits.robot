@@ -1,5 +1,4 @@
 *** Settings ***
-
 *** Keywords ***
 Begin Web Test
     Open browser                     ${URL}    ${BROWSER}
@@ -17,18 +16,23 @@ When User select the Owners with All
      Wait until Page Contains          Owners
      click element                     xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[5]/td[1]/a
      page should contain               Pets and Visits
-     click button                      xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[3]
+     #click button                      xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[3]
 
 And Click on Addnew and User enters valid Dates and Description
-     Wait until Page Contains         New Visit
-     page should contain               New Visit
-     input text                        xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[1]/div/input    2021/04/08
-     input text                        xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[2]/div/input    I need to visit
-     click button                      xpath://html/body/app-root/app-visit-add/div/div/form/div[2]/div/button[2]
+     Wait until Page Contains            New Visit
+     page should contain                 New Visit
+     input text                          xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[1]/div/input    2021/04/08
+     input text                          xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[2]/div/input    I need to visit
+     click button                        xpath://html/body/app-root/app-visit-add/div/div/form/div[2]/div/button[2]
 Then System shows the added visits
-     Wait until Page Contains          Pets and Visits
-     page should contain               Pets and Visits
+     Wait until Page Contains            Pets and Visits
+     page should contain                 Pets and Visits
 
+And Click on Delete button for visits
+     Wait Until Page Contains Element    xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[2]/app-visit-list/table/tr/td[1]
+     click Element                       xpath=(//button[@class="btn btn-default"])[8]
+Then System should deleted visits
+     Wait until Page Contains            xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[2]/app-visit-list/table/thead/tr/th[1]
 End Web Test
    Close All Browsers
 
