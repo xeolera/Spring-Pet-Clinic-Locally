@@ -74,4 +74,10 @@ pipeline {
         }
         
     }
+    
+    post {
+        always {
+            step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jenkins.iths.mailer@gmail.com', sendToIndividuals: true])
+        }
+    }
 }
