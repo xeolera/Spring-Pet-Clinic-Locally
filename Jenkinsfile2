@@ -77,7 +77,9 @@ pipeline {
     
     post {
         always {
-            emailext body: 'A Test EMail', recipientProviders: 'jenkins.iths.mailer@gmail.com', 'jenkins.iths.mailer@gmail.com', subject: 'Test'
+            emailext body: 'Test Message',
+            subject: 'Test Subject',
+            to: 'jenkins.iths.mailer@gmail.com'
         }
     }
 }
