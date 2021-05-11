@@ -15,7 +15,7 @@ Load Page
 Verify Page Not Loaded After Refresh
     Go to                           ${URL2}
     Wait Until Page Contains Element        xpath://html/body/pre
-    Page Should Contain                     Resource was not found.
+    Page Should Contain                     Resource was not found
 
 Verify Page Loaded
     ${LINK_TEXT}                    Get Title

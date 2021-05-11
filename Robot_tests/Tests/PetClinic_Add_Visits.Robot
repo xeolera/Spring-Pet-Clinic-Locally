@@ -2,8 +2,9 @@
 *** Setting ***
 Documentation                   This is some basic infor about the whole test suite
 Resource                           ../Resources/keyword_addvisits.robot
+Resource                           ../Resources/keywords_general.robot
 Library                            SeleniumLibrary
-Test Setup                         Open browser                 ${URL}    ${BROWSER}
+Test Setup                         Open browser                     ${URL}    ${BROWSER}
 Test Teardown                      End Web Test
 *** Variables ***
 ${URL}                          http://localhost:4200/

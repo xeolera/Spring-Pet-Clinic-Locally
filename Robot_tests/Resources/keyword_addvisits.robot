@@ -1,8 +1,5 @@
 *** Settings ***
 *** Keywords ***
-Begin Web Test
-    Open browser                     ${URL}    ${BROWSER}
-    Set selenium timeout             5
 
 Given User on the Infotiv PetClinic page
      Wait until Page Contains          Welcome to Petclinic
@@ -18,7 +15,8 @@ When User select the Owners with All
      #click button                      xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[3]
 
 And Click on Addnew and User enters valid Dates and Description
-     Wait until Page Contains            New Visit
+     page should contain                Owner Information
+     Click button                        xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[3]
      page should contain                 New Visit
      input text                          xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[1]/div/input    2021/04/08
      input text                          xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[2]/div/input    I need to visit
@@ -33,8 +31,9 @@ And Click on Delete button for visits
 
 Then System should deleted visits
      Wait until Page Contains            Owner Information
-End Web Test
-   Close All Browsers
+
+#End Web Test
+ #  Close All Browsers
 
 
 
