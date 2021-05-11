@@ -84,4 +84,3 @@ pipeline {
       recipientProviders: 'jenkins.iths.mailer@gmail.com')}
     
 }
-}
