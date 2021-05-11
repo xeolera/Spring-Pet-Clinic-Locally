@@ -93,7 +93,7 @@ def notifyBuild(String buildStatus = 'STARTED') {
   def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
   def summary = "${subject} (${env.BUILD_URL})"
   def details = """STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
-    Check console output at '${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}];"""
+    Check console output at '${env.BUILD_URL}'"""
 
   // Override default values based on build status
   if (buildStatus == 'STARTED') {
