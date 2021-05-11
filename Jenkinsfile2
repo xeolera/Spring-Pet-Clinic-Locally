@@ -77,9 +77,8 @@ pipeline {
     
     post {
         always {
-            emailext body: 'Test Message',
-            recipientProviders: [developers(), requestor()],
-            subject: 'Test Subject',
+            subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
             to: 'jenkins.iths.mailer@gmail.com'
         }
     }
