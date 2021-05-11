@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation                Testar Selenium och RobotFramework
 Resource                     ../Resources/keywords_pet.robot
+Resource                     ../Resources/keywords_general.robot
 Library                      SeleniumLibrary
 Test Setup                   Begin Web Test
 Test Teardown                End Web Test
@@ -10,7 +11,6 @@ ${BROWSER}      chrome
 ${URL}          http://localhost:4200/
 
 *** Test Cases ***
-
 
 Test to change owner information
   [Documentation]    Edit owner information
