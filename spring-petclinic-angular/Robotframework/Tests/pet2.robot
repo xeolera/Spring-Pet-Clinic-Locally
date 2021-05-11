@@ -29,3 +29,31 @@ Test to change owner information with special signs
   Then changes should reflect in the "Owners" list
 
 
+#___________________________________________________________________
+Edit pet
+  [Documentation]    Edit pet information
+  [Tags]             Edit pet
+
+  Given that user has access to petclinic site
+  And user click on element edit pet
+  when user changes pet information pet name
+  Then changes should reflect in the name field
+
+
+
+
+
+
+#____________________________________________________________________________________________________________
+Edit pet empty namefield
+  [Documentation]    Edit pet information
+  [Tags]             Edit pet
+
+  Given that im on the landing page
+  When l edit a pet
+  And leave the name filed empty
+  Then an error should occur
+
+
+
+

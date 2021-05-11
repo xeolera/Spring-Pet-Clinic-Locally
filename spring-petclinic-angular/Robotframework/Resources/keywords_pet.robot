@@ -148,6 +148,103 @@ Then changes should reflect in the "Owners" list
   input text                      xpath://*[@id="telephone"]    6085551023
   click button                    xpath://html/body/app-root/app-owner-edit/div/div/form/div[7]/div/button[2]
   wait until page contains        Owner Information
+  #------------------------------------------------------------------------------------------------------------
+  # Change pet information
+Given that user has access to petclinic site
+   Verify Page Loaded
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+  wait until page contains        Owners
+  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  wait until page contains        Pets and Visits
+And user click on element edit pet
+  click element                   xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[1]
+when user changes pet information pet name
+  input text                      xpath://*[@id="name"]      Lolo
+  click element                   xpath://html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+Then changes should reflect in the name field
+  wait until page contains        Lolo
+
+
+ # Tear down
+
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+  wait until page contains        Owners
+  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[1]
+  input text                      xpath://*[@id="name"]      Micke
+  click element                   xpath://html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+
+  #________________________________________________________________________________
+  # Edit pet with empty name field
+
+Given that im on the landing page
+  Verify Page Loaded
+
+When l edit a pet
+
+    click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+  wait until page contains        Owners
+  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[1]
+
+And leave the name filed empty
+
+  input text                      xpath://*[@id="name"]
+
+
+Then an error should occur
+   click element                   xpath://html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+
+   # Tear down
+
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+  wait until page contains        Owners
+  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/button[1]
+  input text                      xpath://*[@id="name"]      Micke
+  click element                   xpath://html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]
+  wait until page contains        Pets and Visits
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 End Web Test
