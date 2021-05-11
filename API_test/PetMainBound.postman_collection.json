@@ -6,6 +6,96 @@
 	},
 	"item": [
 		{
+			"name": "Add owner Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"firstName\")));",
+							"pm.test(\"Check lastName\", () => pm.expect(jsonData.lastName).to.equal(pm.environment.get(\"lastName\")));",
+							"pm.test(\"Check telephone number\", () => pm.expect(jsonData.telephone).to.equal(pm.environment.get(\"telephone\")));",
+							"",
+							"pm.environment.set(\"ownerID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\",\n  \"address\": \"{{address}}\",\n  \"city\": \"{{city}}\",\n  \"telephone\": \"{{telephone}}\",\n  \"pets\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/owners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pet Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check name\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"petName\")));\r",
+							"\r",
+							"pm.environment.set(\"petID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"{{petName}}\",\r\n  \"birthDate\": \"{{petBirthDate}}\",\r\n  \"type\": {\r\n    \"id\": {{typeCatID}},\r\n    \"name\": \"{{typeCat}}\"\r\n  },\r\n  \"owner\": {\r\n    \"id\": {{ownerID}},\r\n    \"firstName\": \"{{firstName}}\",\r\n    \"lastName\": \"{{lastName}}\",\r\n    \"address\": \"{{address}}\",\r\n    \"city\": \"{{city}}\",\r\n    \"telephone\": \"{{telephone}}\",\r\n    \"pets\": [] \r\n  },\r\n  \"visits\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/pets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add second pet",
 			"event": [
 				{
@@ -1452,6 +1542,265 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"date\": \"{{visitDateYesterday}}\",\r\n  \"description\": \"{{visitDescription}}\",\r\n  \"id\": null,\r\n  \"pet\": {\r\n    \"birthDate\": \"{{petBirthDate}}\",\r\n    \"id\": {{petID}},\r\n    \"name\": \"{{petName}}\",\r\n    \"type\": {\r\n        \"id\": {{typeCatID}},\r\n        \"name\": \"{{typeCat}}\"\r\n    },\r\n    \"owner\": {\r\n        \"id\": {{ownerID}},\r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"address\": \"{{address}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"telephone\": \"{{telephone}}\",\r\n        \"pets\": [] \r\n    },\r\n    \"visits\": [\r\n        null\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/visits",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit in December (2021)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code in 201\", () => pm.expect(responseCode.code).to.equal(201));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check date\", () => pm.expect(jsonData.date).to.equal(pm.environment.get(\"visitDateDecember\")));",
+							"",
+							"pm.environment.set(\"visitID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"date\": \"{{visitDateDecember}}\",\r\n  \"description\": \"{{visitDescription}}\",\r\n  \"id\": null,\r\n  \"pet\": {\r\n    \"birthDate\": \"{{petBirthDate}}\",\r\n    \"id\": {{petID}},\r\n    \"name\": \"{{petName}}\",\r\n    \"type\": {\r\n        \"id\": {{typeCatID}},\r\n        \"name\": \"{{typeCat}}\"\r\n    },\r\n    \"owner\": {\r\n        \"id\": {{ownerID}},\r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"address\": \"{{address}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"telephone\": \"{{telephone}}\",\r\n        \"pets\": [] \r\n    },\r\n    \"visits\": [\r\n        null\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/visits",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get December visit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check date\", () => pm.expect(jsonData.date).to.equal(pm.environment.get(\"visitDateDecember\")));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/visits/{{visitID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"visits",
+						"{{visitID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit in next year (2022)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code in 201\", () => pm.expect(responseCode.code).to.equal(201));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check date\", () => pm.expect(jsonData.date).to.equal(pm.environment.get(\"visitDateNextYear\")));",
+							"",
+							"pm.environment.set(\"visitID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"date\": \"{{visitDateNextYear}}\",\r\n  \"description\": \"{{visitDescription}}\",\r\n  \"id\": null,\r\n  \"pet\": {\r\n    \"birthDate\": \"{{petBirthDate}}\",\r\n    \"id\": {{petID}},\r\n    \"name\": \"{{petName}}\",\r\n    \"type\": {\r\n        \"id\": {{typeCatID}},\r\n        \"name\": \"{{typeCat}}\"\r\n    },\r\n    \"owner\": {\r\n        \"id\": {{ownerID}},\r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"address\": \"{{address}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"telephone\": \"{{telephone}}\",\r\n        \"pets\": [] \r\n    },\r\n    \"visits\": [\r\n        null\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/visits",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get next year visit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check date\", () => pm.expect(jsonData.date).to.equal(pm.environment.get(\"visitDateNextYear\")));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/visits/{{visitID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"visits",
+						"{{visitID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit with unreasonable date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code in 403 - forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"date\": \"{{visitDateUnreasonable}}\",\r\n  \"description\": \"{{visitDescription}}\",\r\n  \"id\": null,\r\n  \"pet\": {\r\n    \"birthDate\": \"{{petBirthDate}}\",\r\n    \"id\": {{petID}},\r\n    \"name\": \"{{petName}}\",\r\n    \"type\": {\r\n        \"id\": {{typeCatID}},\r\n        \"name\": \"{{typeCat}}\"\r\n    },\r\n    \"owner\": {\r\n        \"id\": {{ownerID}},\r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"address\": \"{{address}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"telephone\": \"{{telephone}}\",\r\n        \"pets\": [] \r\n    },\r\n    \"visits\": [\r\n        null\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/visits",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit in over a year (2022)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code in 403 - forbidden\", () => pm.expect(responseCode.code).to.equal(403));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"date\": \"{{visitDateOverAYear}}\",\r\n  \"description\": \"{{visitDescription}}\",\r\n  \"id\": null,\r\n  \"pet\": {\r\n    \"birthDate\": \"{{petBirthDate}}\",\r\n    \"id\": {{petID}},\r\n    \"name\": \"{{petName}}\",\r\n    \"type\": {\r\n        \"id\": {{typeCatID}},\r\n        \"name\": \"{{typeCat}}\"\r\n    },\r\n    \"owner\": {\r\n        \"id\": {{ownerID}},\r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"address\": \"{{address}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"telephone\": \"{{telephone}}\",\r\n        \"pets\": [] \r\n    },\r\n    \"visits\": [\r\n        null\r\n    ]\r\n  }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
