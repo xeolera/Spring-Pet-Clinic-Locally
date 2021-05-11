@@ -77,10 +77,7 @@ pipeline {
     
    post {
         always {   
-            emailext (
-            subject: subject,
-            body: details,
-            to: 'jenkins.iths.mailer@gmail.com')
+            notifyBuild(currentBuild.result)
             
         }
     }
@@ -132,4 +129,9 @@ def notifyBuild(String buildStatus = 'STARTED') {
     color = 'RED'
     colorCode = '#FF0000'
   }
+  
+  emailext (
+            subject: subject,
+            body: details,
+            to: 'jenkins.iths.mailer@gmail.com')
 }
