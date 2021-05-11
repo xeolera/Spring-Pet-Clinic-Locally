@@ -132,7 +132,6 @@ Click Button "Save Pet"
 User Clicks on "Save Pet" && Owner Information Page Loads
     Click Button "Save Pet"
     Verify Owner Information Page Loaded
-    Sleep                                   2
 
 Click Button "Delete Pet"
     Click Element                           xpath://html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[1]/dl/button[2]
@@ -145,7 +144,6 @@ Click Button "Edit Owner"
     Click Element                           xpath://html/body/app-root/app-owner-detail/div/div/button[2]
 
 Verify Edit Owner Page Loaded
-    Set Selenium Speed                      1
     Wait Until Page Contains Element        xpath://html/body/app-root/app-owner-edit/div/div/h2
     Page Should Contain                     Edit Owner
 
@@ -154,7 +152,6 @@ User Click "Edit Owner" && Owner Page Loaded
     Verify Edit Owner Page Loaded
 
 Edit Last Name Element Text
-    Set selenium speed                      1
     [Arguments]                             ${search_term}
     Input Text                              xpath://html/body/app-root/app-owner-edit/div/div/form/div[3]/div/input             ${search_term}
 
