@@ -18,8 +18,14 @@ ${EMPTY}
     [Documentation]                 Verifiera att användaren ändrar bara en unik husdjurtyp som har samma namn som annan husdjurtyp.
     [Tags]                          TF_D_1
     Go to PetClinic && Click Menu && Verify Page
-    Edit ID 10 && Verify Page
+    Edit ID 4 && Verify Page
     Input New Pet Type Text         papegoja
+    Click Button Update && Verify Pet Type Page Loaded
+    Edit ID 3 && Verify Page
+    Input New Pet Type Text         papegoja
+    Click Button Update && Verify Pet Type Page Loaded
+    Edit ID 3 && Verify Page
+    Input New Pet Type Text         papegoja2
     Click Button Update && Verify Pet Type Page Loaded
 
 Ändra en giltig husdjurtyp till en ogiltig husdjurtyp
@@ -41,7 +47,9 @@ Ta bort en unik id husdjurtyp som har samma husdjurtypnamn som en annan
     [Documentation]                 Verifiera att man tar bort rätt id på husdjurtyper som innehåller samma husdjurtypnamn.
     [Tags]                          TF_D_4
     Go to PetClinic && Click Menu && Verify Page
-    Delete PetType_ID12 && Verify Page Loaded
+    Edit Pet Types Names For ID 2                   octopus
+    Edit Pet Types Names For ID 3                   octopus
+    Delete PetType_ID2 && Verify Page Loaded
 
 
 
