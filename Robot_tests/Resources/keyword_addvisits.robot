@@ -26,7 +26,7 @@ Then System shows the added visits
      page should contain                 Pets and Visits
 
 And Click on Delete button for visits
-     Wait Until Page Contains            I want to visit
+     Wait Until Page Contains            I need to visit
      click Element                       xpath=(//button[@class="btn btn-default"])[8]
 
 Then System should deleted visits
