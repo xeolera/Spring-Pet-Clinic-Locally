@@ -41,12 +41,20 @@ Edit ID 1 && Verify Page
     Click Button_petType_Edit_ID1
     Verify Page_petType_EditPetTypePage Loaded
 
-Edit ID 10 && Verify Page
-    Click Button_petType_Edit_ID10
-    Verify Page_petType_EditPetTypePage Loaded
-
 Edit ID 2 && Verify Page
     Click Button_petType_Edit_ID2
+    Verify Page_petType_EditPetTypePage Loaded
+
+Edit ID 3 && Verify Page
+    Click Button_petType_Edit_ID4
+    Verify Page_petType_EditPetTypePage Loaded
+
+Edit ID 4 && Verify Page
+    Click Button_petType_Edit_ID4
+    Verify Page_petType_EditPetTypePage Loaded
+
+Edit ID 6 && Verify Page
+    Click Button_petType_Edit_ID6
     Verify Page_petType_EditPetTypePage Loaded
 
 Click Button_petType_Edit_ID1
@@ -55,8 +63,11 @@ Click Button_petType_Edit_ID1
 Click Button_petType_Edit_ID2
     Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[2]/td[2]/button[1]
 
-Click Button_petType_Edit_ID10
-    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[11]/td[2]/button[1]
+Click Button_petType_Edit_ID3
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[3]/td[2]/button[1]
+
+Click Button_petType_Edit_ID4
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[4]/td[2]/button[1]
 
 Click Button_petType_Update
     Click Element                           xpath://html/body/app-root/app-pettype-edit/div/div/form/div[2]/div/button[1]
@@ -72,18 +83,37 @@ Click Button Cancel && Verify Page Loaded
     Click Button_petType_Cancel
     Verify Page_petType Loaded
 
-Click Button_petType_Delete_ID6
-    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[7]/td[2]/button[2]
+Click Button_petType_Delete_ID1
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[1]/td[2]/button[2]
 
 Delete PetType && Verify Page Loaded
-    Click Button_petType_Delete_ID6
+    [Arguments]                             ${search_term}
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[1]/td[2]/button[1]
+    Input Text                              id:name             ${search_term}
+    Click Element                           xpath://html/body/app-root/app-pettype-edit/div/div/form/div[2]/div/button[1]
+    Verify Page_petType Loaded
+    Click Button_petType_Delete_ID1
     Verify Page_petType Loaded
 
-Click Button_petType_Delete_ID12
-    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[13]/td[2]/button[2]
+Click Button_petType_Delete_ID2
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[2]/td[2]/button[2]
 
-Delete PetType_ID12 && Verify Page Loaded
-    Click Button_petType_Delete_ID12
+Edit Pet Types Names For ID 2
+    [Arguments]                             ${search_term}
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[2]/td[2]/button[1]
+    Input Text                              id:name             ${search_term}
+    CLick Element                           xpath://html/body/app-root/app-pettype-edit/div/div/form/div[2]/div/button[1]
+    Verify Page_petType Loaded
+
+Edit Pet Types Names For ID 3
+    [Arguments]                             ${search_term}
+    Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[3]/td[2]/button[1]
+    Input Text                              id:name             ${search_term}
+    CLick Element                           xpath://html/body/app-root/app-pettype-edit/div/div/form/div[2]/div/button[1]
+    Verify Page_petType Loaded
+
+Delete PetType_ID2 && Verify Page Loaded
+    Click Button_petType_Delete_ID2
     Verify Page_petType Loaded
 
 Input New Pet Type Text

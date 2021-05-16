@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation                      Testsuite Add Pet Type
+Documentation                      Testsuite Add Pet Type Extra
 Resource                           ../Resources/keywords_petType.robot
 Resource                           ../Resources/keywords_general.robot
 Library                            SeleniumLibrary
@@ -160,7 +160,7 @@ Användaren kan skapa 50 samma husdjurtyp efter varann
     Click Button Add && Verify Input Field Visible
     Input New Pet Type Text             maxgräns
     Pet Type Saves and Page Loads & Verifies
-    Click Button Add && Verify Input Field Visible
+   Click Button Add && Verify Input Field Visible
     Input New Pet Type Text             maxgräns
     Pet Type Saves and Page Loads & Verifies
     Click Button Add && Verify Input Field Visible

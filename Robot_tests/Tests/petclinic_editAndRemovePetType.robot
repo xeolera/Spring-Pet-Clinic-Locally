@@ -26,8 +26,8 @@ Användaren kan mata in nya ändringen av husdjurtyp utan att spara
     Click Button && Verify Edit and Input Field Page Loaded
     Input New Pet Type Text             HAMSTER
 
-Användaren kan spara nya inmatningen av husdjur genom "Update"-knappen i Pet Types-sidan
-    [Documentation]                 Verifiera att användaren kan spara en husdjurtyp som har ändrats
+Användaren Lagra nya inmatningen av husdjur genom "Update"-knappen i Pet Types-sidan
+    [Documentation]                 Verifiera att användaren kan lagra en husdjurtyp som har ändrats
     [Tags]                          TF_C_3
     Go to PetClinic && Click Menu && Verify Page
     Click Button && Verify Edit and Input Field Page Loaded
@@ -45,4 +45,4 @@ Användaren kan ta bort husdjurtypen "hästarärgrymma?//" från listan genom "D
     [Documentation]                 Verifiera att användaren kan ta bort önskad husdjurtyp från listan
     [Tags]                          TF_C_5
     Go to PetClinic && Click Menu && Verify Page
-    Delete PetType && Verify Page Loaded
+    Delete PetType && Verify Page Loaded                    hästarärgrymma?//
