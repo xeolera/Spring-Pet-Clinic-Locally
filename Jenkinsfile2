@@ -14,7 +14,7 @@ pipeline {
                   }
            }
       
-         stage('Postman testing boundaries') {
+         stage('Postman Testing Boundaries') {
             steps { 
                 script {
                     try {
@@ -31,7 +31,7 @@ pipeline {
             }
         }
          
-          stage('Postman testing iterations') {
+          stage('Postman Testing Iterations') {
             steps { 
                 script {
                     try {
