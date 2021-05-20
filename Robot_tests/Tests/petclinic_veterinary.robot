@@ -6,10 +6,6 @@ Library                            SeleniumLibrary
 Test Setup                         Begin Web Test
 Test Teardown                      End Web Test
 
-*** Variables ***
-${BROWSER}          chrome
-${URL}              http://localhost:4200/
-
 *** Test Cases ***
 
 Användaren kan navigera sig till "Veterinär"-sidan via menyn
@@ -21,7 +17,6 @@ Användaren kan navigera sig till "Veterinär"-sidan via menyn
 Användaren kan påbörja ändringsprocessen genom att klicka på "Edit Vet"-knappen bredvid valda veterinären.
     [Documentation]                 Verifiera att användaren kan starta ändringen av en veterinär via knapp
     [Tags]                          GD_398
-
     Access Web Page & Verify Home Page Loaded
     User Click Menu && Veterinarians Page Loaded
     User Clicks "Edit Vet" && Edit Veterinarian Page Loaded
@@ -41,9 +36,10 @@ Användaren kan klicka på specialitet och få fram en "drop down"-meny av tillg
     Access Web Page & Verify Home Page Loaded
     User Click Menu && Veterinarians Page Loaded
     User Clicks "Edit Vet" && Edit Veterinarian Page Loaded
+    Click Speciality DropDown-Box
 
 Användaren kan välja specialitet till valda veterinären
-    [Documentation]                  Verifiera att användaren kan välja ett specialitet till veterinären som skall ändras
+    [Documentation]                 Verifiera att användaren kan välja ett specialitet till veterinären som skall ändras
     [Tags]                          GD_401
     Access Web Page & Verify Home Page Loaded
     User Click Menu && Veterinarians Page Loaded
@@ -60,3 +56,5 @@ Användaren kan ändra och spara veterinärens information i listan av befintlig
     Input Edit Veterinarian Last Name                                   Nikolic
     User Clicks Speciality && Chooses Radiology
     User Clicks "Save Vet" && Veterinarians Page Loaded
+
+
