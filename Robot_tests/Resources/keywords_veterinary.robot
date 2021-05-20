@@ -1,3 +1,4 @@
+
 ### Keywords specifically regarding the Veterinary Page.
 ### Input own keywords here and make them generally for everyone to reuse if possible :)
 
@@ -47,6 +48,12 @@ Click Speciality DropDown-Box
 Click Speciality DropDown-Box Radiology
     Click Element                         xpath://html/body/div[2]/div[2]/div/div/div/mat-option[1]/span
 
+Click Speciality DropDown-Box Surgery
+    Click Element                         xpath://html/body/div[2]/div[2]/div/div/div/mat-option[2]/span
+
+Click Speciality DropDown-Box Dentistry
+    Click Element                         xpath://html/body/div[2]/div[2]/div/div/div/mat-option[3]/span
+
 User Clicks Speciality && Chooses Radiology
     Click Speciality DropDown-Box
     Click Speciality DropDown-Box Radiology
@@ -54,9 +61,59 @@ User Clicks Speciality && Chooses Radiology
     Mouse Up                             xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
     #Temporär lösning - Mouse Down klicka vänstra musknappen på valfri tom webbyta och Mouse Up avlägsnar musklickandet och då försvinner dropdown menyn
 
+User Clicks Speciality && Chooses Surgery
+    Click Speciality DropDown-Box
+    Click Speciality DropDown-Box Surgery
+    Mouse Down                           xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+    Mouse Up                             xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+
+User Clicks Speciality && Chooses Dentistry
+    Click Speciality DropDown-Box
+    Click Speciality DropDown-Box Dentistry
+    Mouse Down                           xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+    Mouse Up                             xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+
+User Clicks On All Of Specialities
+    Click Speciality DropDown-Box
+    Click Speciality DropDown-Box Radiology
+    Click Speciality DropDown-Box Surgery
+    Click Speciality DropDown-Box Dentistry
+
+User Clicks Speciality && Clicks On Empty Webbpage Space To Cancel The Menu
+    Click Speciality DropDown-Box
+    Mouse Down                           xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+    Mouse Up                             xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+
+User Click Speciality && Presses ESC Key
+    Click Speciality DropDown-Box
+    Press Keys                           xpath://html/body/app-root/app-vet-edit/div                                      escape
+
 Click Button "Save Vet"
     Click Element                        xpath://html/body/app-root/app-vet-edit/div/div/form/div[5]/div/button[2]
 
 User Clicks "Save Vet" && Veterinarians Page Loaded
     Click Button "Save Vet"
     Verify Veterinarians Page Loaded
+
+Check If Criteria "First Name" Has Not Been Met (Less than 2 characters)
+    Wait Until Page Contains Element     xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/span[2]
+    Page Should Contain                  First name must be at least 2 characters long
+
+Check If Criteria "Last Name" Has Not Been Met (Less than 2 characters)
+    Wait Until Page Contains Element     xpath://html/body/app-root/app-vet-edit/div/div/form/div[3]/div/input
+    Page Should Contain                  Last name must be at least 2 characters long
+
+Input First Name With Less Than 2 Characters && Check If Criteria Shows Up
+    [Arguments]                          ${search_term}
+    Click Element                        xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/input
+    Input Text                           id:firstName             ${search_term}
+    Check If Criteria "First Name" Has Not Been Met (Less than 2 characters)
+
+Input Last Name With Less Than 2 Characters && Check If Criteria Shows Up
+    [Arguments]                          ${search_term}
+    Click Element                        xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/input
+    Input Text                           id:lastName              ${search_term}
+    Check If Criteria "Last Name" Has Not Been Met (Less than 2 characters)
+
+Check If Criteria Shows Green Icon Confirmation
+    Page Should Contain Element          xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/span
