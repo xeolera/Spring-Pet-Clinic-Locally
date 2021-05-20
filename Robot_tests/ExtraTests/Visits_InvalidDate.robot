@@ -11,7 +11,7 @@ ${BROWSER}                      Chrome
 
 
 *** Test Cases ***
-User can add a new Visit with Previous Dt to the Current Dt
+User can add a new Visit with Previous Dt to the Current Dtc
       [Documentation]   This test adds visit
       [Tags]            Add a visit
         Given User on the Infotiv PetClinic page
