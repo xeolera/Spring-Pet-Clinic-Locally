@@ -53,6 +53,7 @@ Användaren kan avbryta "drop down"-menyn vid val av Specialitet med hjälp av E
     User Click Menu && Veterinarians Page Loaded
     User Clicks "Edit Vet" && Edit Veterinarian Page Loaded
     User Click Speciality && Presses ESC Key
+    Verify Edit Veterinarian Page Loaded
 
 Användaren kan mata in specialtecken i för- och efternamnfälten
     [Documentation]                 Verifiera att inmatning av specialtecken godkänns

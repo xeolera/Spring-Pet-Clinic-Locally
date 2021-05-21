@@ -1,5 +1,9 @@
 *** Settings ***
 
+*** Variables ***
+${BROWSER}          chrome
+${URL}              http://localhost:4200/
+
 *** Keywords ***
 Begin Web Test
     Open browser                     about:blank             ${BROWSER}

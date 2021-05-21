@@ -86,13 +86,14 @@ User Clicks Speciality && Clicks On Empty Webbpage Space To Cancel The Menu
 
 User Click Speciality && Presses ESC Key
     Click Speciality DropDown-Box
-    Press Keys                           xpath://html/body/app-root/app-vet-edit/div                                      escape
+    Press Keys                           None                                     ESC
 
-Click Button "Save Vet"
+
+Click Button "Save Vet" For Edit
     Click Element                        xpath://html/body/app-root/app-vet-edit/div/div/form/div[5]/div/button[2]
 
 User Clicks "Save Vet" && Veterinarians Page Loaded
-    Click Button "Save Vet"
+    Click Button "Save Vet" For Edit
     Verify Veterinarians Page Loaded
 
 Click Menu Add New Veterinary
