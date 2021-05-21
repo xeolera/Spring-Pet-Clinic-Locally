@@ -110,9 +110,12 @@ Input New Veterinary Last Name
     Click Element                       Xpath://html/body/app-root/app-vet-add/div/div/form/div[3]/div/input
     Input Text                            id:lastName              ${search_term}
 
-
 Click "Save Vet" For Add
     Click Element                       xpath://html/body/app-root/app-vet-add/div/div/form/div[5]/div/button[2]
+
+Chose Type For Add New Vet Surgery
+    Click Element                       xpath://html/body/app-root/app-vet-add/div/div/form/div[4]/div/div/select/option[2]
+
 
 Check If Criteria "First Name" Has Not Been Met (Less than 2 characters)
     Wait Until Page Contains Element     xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/span[2]
