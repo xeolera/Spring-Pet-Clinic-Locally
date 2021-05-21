@@ -95,6 +95,25 @@ User Clicks "Save Vet" && Veterinarians Page Loaded
     Click Button "Save Vet"
     Verify Veterinarians Page Loaded
 
+Click Menu Add New Veterinary
+    Click Element                       xpath://html/body/app-root/div[1]/nav/div/ul/li[3]/a
+    Click Element                       xpath://html/body/app-root/div[1]/nav/div/ul/li[3]/ul/li[2]/a
+    Page Should Contain                 New Veterinarian
+
+Input New Veterinary First Name
+    [Arguments]                         ${search_term}
+    Click Element                       Xpath://html/body/app-root/app-vet-add/div/div/form/div[2]/div/input
+    Input Text                            id:firstName              ${search_term}
+
+Input New Veterinary Last Name
+    [Arguments]                         ${search_term}
+    Click Element                       Xpath://html/body/app-root/app-vet-add/div/div/form/div[3]/div/input
+    Input Text                            id:lastName              ${search_term}
+
+
+Click "Save Vet" For Add
+    Click Element                       xpath://html/body/app-root/app-vet-add/div/div/form/div[5]/div/button[2]
+
 Check If Criteria "First Name" Has Not Been Met (Less than 2 characters)
     Wait Until Page Contains Element     xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/span[2]
     Page Should Contain                  First name must be at least 2 characters long
