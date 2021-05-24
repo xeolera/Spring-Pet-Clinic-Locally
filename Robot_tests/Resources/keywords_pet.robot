@@ -209,3 +209,37 @@ Then an error should occur
   wait until page contains        Pets and Visits
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+#-------------------------------------------
+
+#Stefan added new keywords
+
+Click Button "Add New Pet"
+    Click Element                                    xpath://html/body/app-root/app-owner-detail/div/div/button[3]
+
+Verify "Add Pet" Page Loaded
+    Wait Until Page Contains Element                 xpath://html/body/app-root/app-pet-add/div/div/h2
+    Page Should Contain                              Add Pet
+
+User Clicks On "Add New Pet" && Add Pet Page Loads
+    Click Button "Add New Pet"
+    Verify "Add Pet" Page Loaded
+
+User Inputs Name to the New Pet
+    [Arguments]                                     ${search_term}
+    Click Element                                   xpath://html/body/app-root/app-pet-add/div/div/form/div[3]/div/input
+    Input Text                                      id:name                                       ${search_term}
+
+User Inputs Birth Date to the New Pet
+    [Arguments]                                     ${search_term}
+    Click Element                                   xpath://html/body/app-root/app-pet-add/div/div/form/div[4]/div/input
+    Input Text                                      name:birthDate                                       ${search_term}
+
+Chose "Cat" From List
+    Select From List By Label                       xpath://*[@id="type"]  cat
+
+Click Button "Save Pet" on Add Pet Page
+    Click Element                                   xpath://html/body/app-root/app-pet-add/div/div/form/div[6]/div/button[2]
+
+User Chooses Type From List && Clicks Save Pet
+    Chose "Cat" From List
+    Click Button "Save Pet" on Add Pet Page
