@@ -4,7 +4,6 @@
 Begin Web Test
     Open browser                     about:blank             ${BROWSER}
     Set selenium timeout             10
-    Set selenium speed               1
 
 Go to Web Page
     Load Page
@@ -16,7 +15,7 @@ Load Page
 Verify Page Not Loaded After Refresh
     Go to                           ${URL2}
     Wait Until Page Contains Element        xpath://html/body/pre
-    Page Should Contain                     Resource was not found.
+    Page Should Contain                     Resource was not found
 
 Verify Page Loaded
     ${LINK_TEXT}                    Get Title
@@ -42,7 +41,7 @@ Verify Page_OwnerList Loaded
     Wait Until Page Contains Element        xpath://html/body/app-root/app-owner-list/div/div/h2
     Page Should Contain                     Owners
 
-THEN user will recieve the list of all current owners.
+THEN user will recieve the list of all current owners
     Verify Page_OwnerList Loaded
 
 End Web Test
