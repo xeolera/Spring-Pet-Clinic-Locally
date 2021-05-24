@@ -2,8 +2,6 @@
 *** Keywords ***
 Begin Web Test
     Open browser                     ${URL}    ${BROWSER}
-    Set selenium speed               1
-    Set selenium timeout             5
 
 Access Web Page & Verify Home Page Loaded
      Wait until Page Contains          Welcome to Petclinic
@@ -18,11 +16,11 @@ User Clicks Add && Specialties Division Loaded
       Wait until Page Contains           New Specialty
 
 Input Specialty name && Clicks on Save
-       Click Element                       xpath=(//button[@class="btn btn-default"])[7]
+       Set selenium speed                  1
        Wait Until Page Contains Element    //input[@name="name"]
        Input Text                          //input[@name="name"]    Pediatric
-       Wait Until Page Contains Element    xpath=(//button[@class="btn btn-default"])[7]
-       Click Element                       xpath=(//button[@class="btn btn-default"])[7]
+
+       Click Element                      xpath://html/body/app-root/app-specialty-list/div/div/div[1]/app-specialty-add/div/div/form/div[2]/div/button
 
 System shows the added Specialties
        page should contain               Specialties

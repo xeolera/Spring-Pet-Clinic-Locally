@@ -1,6 +1,7 @@
 *** Settings ***
 
 *** Keywords ***
+
 Given when user has access to the web page and pettype exists
   Verify Page Loaded
   Click element               xpath://html/body/app-root/div[1]/nav/div/ul/li[4]/a
@@ -209,3 +210,38 @@ Then an error should occur
   wait until page contains        Pets and Visits
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
+# -----------------------------------------
+
+# Stefan added new keywords start from here
+
+Verify Page "Add Pet" Loaded
+    Wait Until Page Contains Element    xpath://html/body/app-root/app-pet-add/div/div/h2
+    Page Should Contain                 Add Pet
+
+Click Button "Add Pet"
+    Click Button                        xpath://html/body/app-root/app-owner-detail/div/div/button[3]
+
+User Clicks On "Add New Pet" && Add Pet Page Loads
+    Click Button "Add Pet"
+    Verify Page "Add Pet" Loaded
+
+User Inputs Name to the New Pet
+  [Arguments]                               ${search_term}
+  Click Element                             xpath://html/body/app-root/app-pet-add/div/div/form/div[3]/div/input
+  Input text                                xpath://*[@id="name"]                                                              ${search_term}
+
+User Inputs Birth Date to the New Pet
+  [Arguments]                               ${search_term}
+  Click Element                             xpath://html/body/app-root/app-pet-add/div/div/form/div[4]/div/input
+  Input text                                xpath://html/body/app-root/app-pet-add/div/div/form/div[4]/div/input               ${search_term}
+
+Choose "Cat" As Pet Type
+  Select From List By Label                 xpath://*[@id="type"]                                                              cat
+
+Click Button "Save Pet"
+   When user clicks on “Save pet”
+
+User Chooses Type From List && Clicks Save Pet
+   Choose "Cat" As Pet Type
+   Click Button "Save Pet"
+
