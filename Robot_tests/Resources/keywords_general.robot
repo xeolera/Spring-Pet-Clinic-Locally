@@ -8,37 +8,25 @@ ${URL}              http://localhost:4200/
 ${URL_VETERINARY}   http://localhost:4200/petclinic/vets
 
 #First name
-${OWNER_FIRSTNAME_A}         Jeff
-${OWNER_FIRSTNAME_B}         Carola
-${OWNER_FIRSTNAME_C}         Bert
+${OWNER_A_FIRSTNAME}          Jeff
+${OWNER_B_FIRSTNAME}          Carola
+${OWNER_C_FIRSTNAME}          Bert
 #Last name
-${OWNER_LASTNAME_A}          Jeffson
-${OWNER_LASTNAME_B}          Gynning
-${OWNER_LASTNAME_C}          Karlsson
-#Address
-${OWNER_ADDRESS_A}           Hjortmosstegatan 8b
-${OWNER_ADDRESS_B}           Angeredsvägen 2c
-${OWNER_ADDRESS_C}           Lingongatan 33a
-#City
-${OWNER_CITY_A}              Trollhättan
-${OWNER_CITY_B}              Göteborg
-${OWNER_CITY_C}              Härnösand
-#Telephone
-${OWNER_TELEPHONE_A}         0765505252
-${OWNER_TELEPHONE_B}         0733335255
-${OWNER_TELEPHONE_C}         0745255258
+${OWNER_A_LASTNAME}          Jeffson
+${OWNER_B_LASTNAME}          Gynning
+${OWNER_C_LASTNAME}          Karlsson
 #Pet Name
-${PET_NAME_A}                Ergo
-${PET_NAME_B}                Tirius
-${PET_NAME_C}                Klempa
+${PET_A_NAME}          Ergo
+${PET_B_NAME}          Tirius
+${PET_C_NAME}          Klempa
 #Pet Birth Date
-${PET_BIRTHDATE_A}           2020/02/17
-${PET_BIRTHDATE_B}           2020/06/03
-${PET_BIRTHDATE_C}           2017/12/24
+${PET_A_BIRTHDATE}          2020/02/17
+${PET_B_BIRTHDATE}          2020/06/03
+${PET_C_BIRTHDATE}          2017/12/24
 #Pet Visits
-${PET_VISITDATE_A}           2021/05/27
-${PET_VISITDATE_B}           2021/07/30
-${PET_VISITDATE_C}           2021/06/02
+${PET_A_VISIT}              2021/05/27
+${PET_B_VISIT}              2021/07/30
+${PET_C_VISIT}              2021/06/02
 
 *** Keywords ***
 Begin Web Test

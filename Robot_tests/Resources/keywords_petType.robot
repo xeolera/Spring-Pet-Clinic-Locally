@@ -23,7 +23,7 @@ Click Button_petType_add
 
 
 Verify Inputfield_newPetType
-    Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
+    Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/div[1]/app-pettype-add/div/div/h2
     Page Should Contain                     New Pet Type
 
 Click Button_petType_edit_ID5

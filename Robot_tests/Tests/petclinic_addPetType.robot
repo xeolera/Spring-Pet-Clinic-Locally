@@ -33,7 +33,7 @@ Användaren kan lägga till ny husdjurtyp i listan genom enter tryck i tangetbor
     [Tags]                          TF_3
     Go to PetClinic && Click Menu && Verify Page
     Click Button Add && Verify Input Field Visible
-    Input New Pet Type Text                oxe
+    Input New Pet Type Text             oxe
     Click Element Enter
     Verify Page_petType Loaded
 
