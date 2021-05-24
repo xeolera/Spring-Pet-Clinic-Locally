@@ -35,6 +35,25 @@ Then System should deleted visits
 #End Web Test
  #  Close All Browsers
 
+#Stefans added new keywords here regarding New Visit
 
+Verify "New Visit" Page Has Been Loaded
+    Wait Until Page Contains Element    xpath://html/body/app-root/app-visit-add/div/div/h2
+    Page Should Contain                 New Visit
 
+User Types Visit Date
+    [Arguments]                         ${search_term}
+    Click Element                       xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[1]/div/input
+    Input Text                          xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[1]/div/input                  ${search_term}
+
+Description for Requested Visit Date
+    Click Element                       xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[2]/div/input
+    Input Text                          xpath://html/body/app-root/app-visit-add/div/div/form/div[1]/div[2]/div/input       Just a test visit - to see if my pet is alive
+
+Click Button "Add Visit" in New Visit Page
+    Click Element                       xpath://html/body/app-root/app-visit-add/div/div/form/div[2]/div/button[2]
+
+User Types Description Then Clicks on "Add Visit" && Owner Information Page Loads
+    Description for Requested Visit Date
+    Click Button "Add Visit" in New Visit Page
 

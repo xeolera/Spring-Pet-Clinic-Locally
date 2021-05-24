@@ -21,6 +21,7 @@ Click Button Add && Verify Input Field Visible
 Click Button_petType_add
     Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
 
+
 Verify Inputfield_newPetType
     Wait Until Page Contains Element        xpath://html/body/app-root/app-pettype-list/div/div/div[1]/app-pettype-add/div/div/h2
     Page Should Contain                     New Pet Type
@@ -101,7 +102,7 @@ Click Button_petType_Delete_ID2
 Edit Pet Types Names For ID 2
     [Arguments]                             ${search_term}
     Click Element                           xpath://html/body/app-root/app-pettype-list/div/div/table/tbody/tr[2]/td[2]/button[1]
-    Input Text                              id:name             ${search_term}
+    Input Text                              id:name            ${search_term}
     CLick Element                           xpath://html/body/app-root/app-pettype-edit/div/div/form/div[2]/div/button[1]
     Verify Page_petType Loaded
 
