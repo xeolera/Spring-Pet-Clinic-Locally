@@ -18,15 +18,20 @@ User Clicks Add && Specialties Division Loaded
       Wait until Page Contains           New Specialty
 
 Input Specialty name && Clicks on Save
-       Click Element                    xpath=(//button[@class="btn btn-default"])[14]
+       Click Element                       xpath=(//button[@class="btn btn-default"])[7]
        Wait Until Page Contains Element    //input[@name="name"]
        Input Text                          //input[@name="name"]    Pediatric
-       Wait Until Page Contains Element    xpath=(//button[@class="btn btn-default"])[13]
-       Click Element                       xpath=(//button[@class="btn btn-default"])[13]
+       Wait Until Page Contains Element    xpath=(//button[@class="btn btn-default"])[7]
+       Click Element                       xpath=(//button[@class="btn btn-default"])[7]
 
 System shows the added Specialties
        page should contain               Specialties
        Wait until Page Contains          Specialties
+
+System display the existing specialties
+       page should contain               Specialties
+       Wait until Page Contains          Specialties
+
 End Web Test
        Close Browser
 
