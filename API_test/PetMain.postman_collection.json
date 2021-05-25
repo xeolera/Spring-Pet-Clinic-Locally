@@ -516,7 +516,7 @@
 			"response": []
 		},
 		{
-			"name": "Add pet type",
+			"name": "Add pettype",
 			"event": [
 				{
 					"listen": "test",
@@ -560,7 +560,7 @@
 			"response": []
 		},
 		{
-			"name": "Get new pet type",
+			"name": "Get new pettype",
 			"event": [
 				{
 					"listen": "test",
@@ -767,7 +767,7 @@
 			"response": []
 		},
 		{
-			"name": "Add 2nd pet type",
+			"name": "Add 2nd pettype",
 			"event": [
 				{
 					"listen": "test",
@@ -811,7 +811,7 @@
 			"response": []
 		},
 		{
-			"name": "Get 2nd new pet type",
+			"name": "Get 2nd new pettype",
 			"event": [
 				{
 					"listen": "test",
@@ -839,6 +839,706 @@
 						"api",
 						"pettypes",
 						"{{petTypeID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 1st speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check speciality\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"speciality\")));",
+							"",
+							"pm.environment.set(\"specialityID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"name\": \"{{speciality}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/specialties",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 1st new speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check speciality\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"speciality\")));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/specialties/{{specialityID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties",
+						"{{specialityID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2nd speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check speciality\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"speciality2\")));",
+							"",
+							"pm.environment.set(\"specialityID2\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": null,\n  \"name\": \"{{speciality2}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/specialties",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 2nd new speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check speciality\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"speciality2\")));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/specialties/{{specialityID2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties",
+						"{{specialityID2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 1st vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check name\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"vetFirstName\")));\r",
+							"\r",
+							"pm.environment.set(\"vetID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"firstName\": \"{{vetFirstName}}\",\r\n  \"lastName\": \"{{vetLastName}}\",\r\n  \"specialties\":  [\r\n    {\r\n      \"id\": {{specialityID}},\r\n      \"name\": \"{{speciality}}\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/vets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 1st vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"vetFirstName\")));\r",
+							"pm.test(\"Check lastname\", () => pm.expect(jsonData.lastName).to.equal(pm.environment.get(\"vetLastName\")))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2nd vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check name\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"vetFirstName2\")));\r",
+							"\r",
+							"pm.environment.set(\"vetID2\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": null,\r\n  \"firstName\": \"{{vetFirstName2}}\",\r\n  \"lastName\": \"{{vetLastName2}}\",\r\n  \"specialties\": [\r\n    {\r\n      \"id\": {{specialityID2}},\r\n      \"name\": \"{{speciality2}}\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/vets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 2nd vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"vetFirstName2\")));\r",
+							"pm.test(\"Check lastname\", () => pm.expect(jsonData.lastName).to.equal(pm.environment.get(\"vetLastName2\")))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update 1st speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => pm.expect(responseCode.code).to.equal(204));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": {{specialityID}},\n  \"name\": \"{{putSpeciality}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/specialties/{{specialityID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties",
+						"{{specialityID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 1st updated speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check speciality\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"putSpeciality\")));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/specialties/{{specialityID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties",
+						"{{specialityID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update 2nd speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => pm.expect(responseCode.code).to.equal(204));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": {{specialityID2}},\n  \"name\": \"{{putSpeciality2}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/specialties/{{specialityID2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties",
+						"{{specialityID2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 2nd updated speciality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"Status code is 200\", () => pm.expect(responseCode.code).to.equal(200));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							"",
+							"pm.test(\"Check speciality\", () => pm.expect(jsonData.name).to.equal(pm.environment.get(\"putSpeciality2\")));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/specialties/{{specialityID2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"specialties",
+						"{{specialityID2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update 1st vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code in 204\", () => pm.expect(responseCode.code).to.equal(204));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": {{vetID}},\r\n  \"firstName\": \"{{putVetFirstName}}\",\r\n  \"lastName\": \"{{putVetLastName}}\",\r\n  \"specialties\": [\r\n    {\r\n      \"id\": {{specialityID2}},\r\n      \"name\": \"{{speciality2}}\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get updated 1st vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"putVetFirstName\")));\r",
+							"pm.test(\"Check lastname\", () => pm.expect(jsonData.lastName).to.equal(pm.environment.get(\"putVetLastName\")))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update 2nd vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code in 204\", () => pm.expect(responseCode.code).to.equal(204));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": {{vetID2}},\r\n  \"firstName\": \"{{putVetFirstName2}}\",\r\n  \"lastName\": \"{{putVetLastName2}}\",\r\n  \"specialties\": [\r\n    {\r\n      \"id\": {{specialityID}},\r\n      \"name\": \"{{speciality}}\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get updated 2nd vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code in 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+							"\r",
+							"pm.test(\"Check firstname\", () => pm.expect(jsonData.firstName).to.equal(pm.environment.get(\"putVetFirstName2\")));\r",
+							"pm.test(\"Check lastname\", () => pm.expect(jsonData.lastName).to.equal(pm.environment.get(\"putVetLastName2\")))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete 1st vet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code in 204\", () => pm.expect(responseCode.code).to.equal(204));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm 1st vet deleted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code in 404 - not found\", () => pm.expect(responseCode.code).to.equal(404));",
+							"pm.test(\"Response time should be below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/vets/{{vetID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"vets",
+						"{{vetID}}"
 					]
 				}
 			},

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation                      Testsuite Owner-functionality
 Resource                           ../Resources/keywords_owner.robot
+Resource                           ../Resources/keywords_general.robot
 Library                            SeleniumLibrary
 Test Setup                         Begin Web Test
 Test Teardown                      End Web Test
@@ -42,4 +43,4 @@ User can access website, and navigate to owner-list from homepage (Gherkins Synt
     GIVEN that user has access to the web page
     AND user clicks on the menu "Owners"
     WHEN user clicks on menu option "All"
-    THEN user will recieve the list of all current owners.
+    THEN user will recieve the list of all current owners

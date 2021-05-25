@@ -39,11 +39,6 @@ Edit pet
   when user changes pet information pet name
   Then changes should reflect in the name field
 
-
-
-
-
-
 #____________________________________________________________________________________________________________
 Edit pet empty namefield
   [Documentation]    Edit pet information

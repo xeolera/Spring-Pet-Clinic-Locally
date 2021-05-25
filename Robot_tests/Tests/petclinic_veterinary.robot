@@ -8,7 +8,7 @@ Test Teardown                      End Web Test
 
 *** Test Cases ***
 
-Användaren kan navigera sig till "Veterinär"-sidan via menyn
+Användaren kan navig era sig till "Veterinär"-sidan via menyn
     [Documentation]                 Verifiera att användaren kan ha åtkomst till veterinär-sidan genom att klicka på menyn
     [Tags]                          GD_397
     Access Web Page & Verify Home Page Loaded
@@ -27,7 +27,7 @@ Användaren kan mata in information i för- och efternamnsfälten
     Access Web Page & Verify Home Page Loaded
     User Click Menu && Veterinarians Page Loaded
     User Clicks "Edit Vet" && Edit Veterinarian Page Loaded
-    Input Edit Veterinarian First Name                                  Stefan
+    Input Edit Veterinarian First Name                                 Stefan
     Input Edit Veterinarian Last Name                                   Nikolic
 
 Användaren kan klicka på specialitet och få fram en "drop down"-meny av tillgängliga specialiteter att välja emellan

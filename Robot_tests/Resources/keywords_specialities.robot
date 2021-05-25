@@ -3,6 +3,7 @@
 *** Keywords ***
 
 Access Web Page && Verify Home Page Loaded
+
      Go to Web Page
 
 User Clicks Menu && Specialties Page Loaded
@@ -28,3 +29,4 @@ System shows the added Specialties
 System display the existing specialties
        page should contain               Specialties
        Wait until Page Contains          Specialties
+

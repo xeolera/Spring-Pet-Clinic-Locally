@@ -11,15 +11,16 @@ Test Teardown                      End Web Test
 ${URL}                             http://localhost:4200/
 ${BROWSER}                         Chrome
 
-
 *** Test Cases ***
 #User verifies for Home button in OWNERS tab with all option
       #[Documentation]    This test checks for home button in OWNER tab
       #[Tags]             Home button
-       #Given User on the Infotiv PetClinic page
+
+        #Given User on the Infotiv PetClinic page
         #When User select the Owners with All option
-       #Then System shows Owners information with Home button and Add Owner button
-       #End Web Test
+        #Then System shows Owners information with Home button and Add Owner button
+        #End Web Test
+
 
 User verifies for Home button in VETERINARIANS tab with all option
       [Documentation]    This test checks for home button VETERINARIANS tab

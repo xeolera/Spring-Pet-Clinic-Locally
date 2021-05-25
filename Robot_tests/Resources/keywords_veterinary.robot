@@ -140,3 +140,4 @@ Input Last Name With Less Than 2 Characters && Check If Criteria Shows Up
 
 Check If Criteria Shows Green Icon Confirmation
     Page Should Contain Element          xpath://html/body/app-root/app-vet-edit/div/div/form/div[2]/div/span
+
