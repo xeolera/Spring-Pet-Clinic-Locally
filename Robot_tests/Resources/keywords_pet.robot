@@ -2,9 +2,10 @@
 
 *** Keywords ***
 Given when user has access to the web page and pettype exists
-  Verify Page Loaded
+
+  Go to Web Page
   Click element               xpath://html/body/app-root/div[1]/nav/div/ul/li[4]/a
-  Wait until page contains  Pet Types
+  Wait until page contains    Pet Types
   Click button                xpath://html/body/app-root/app-pettype-list/div/div/div/button[2]
   Input text                  xpath://*[@id="name"]  Cat
   Click button                xpath://*[@id="pettype"]/div[2]/div/button
@@ -38,7 +39,9 @@ Then the user will have succesfully added a new pet to the chosen owner
 #_____________________________________________________________________________________________________
 
 Given a user is on the landing page
-  Verify Page Loaded
+
+    Go to Web Page
+    Set selenium speed          1
 
 When the user adds a pet with numbers in the name field
     Click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[4]/a/span[2]
@@ -54,7 +57,8 @@ Then the pet should be added
 
 
 Given that user has access to "petclinic" site
-  Wait Until Page Contains        SpringPetclinicAngular
+
+  Go to Web Page
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
   wait until element is visible   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]
@@ -97,24 +101,24 @@ Then changes should reflect in "Owners" list
 # Test update owner with special signs in name
 Given that user has access to the "petclinic" site
 
-  Wait Until Page Contains        SpringPetclinicAngular
-  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
-  wait until element is visible   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul
-  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]
-  wait until page contains element        xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
-  click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
-  wait until page contains        Owner Information
+    Go to Web Page
+    click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+    wait until element is visible   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul
+    click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]
+    wait until page contains element        xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+    click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
+    wait until page contains        Owner Information
 
 When user changes owner information with special signs and saves
-  click button                    xpath://html/body/app-root/app-owner-detail/div/div/button[2]
-  wait until page contains        Update Owner
-  input text                      xpath://*[@id="firstName"]    ¤Johan¤
-  input text                      xpath://*[@id="lastName"]     !Svensson!
-  input text                      xpath://*[@id="address"]      Järntorgetsgatan 22
-  input text                      xpath://*[@id="city"]         Göteborg
-  input text                      xpath://*[@id="telephone"]    0311111111
-  click button                    xpath://html/body/app-root/app-owner-edit/div/div/form/div[7]/div/button[2]
-  wait until page contains        Owner Information
+    click button                    xpath://html/body/app-root/app-owner-detail/div/div/button[2]
+    wait until page contains        Update Owner
+    input text                      xpath://*[@id="firstName"]    ¤Johan¤
+    input text                      xpath://*[@id="lastName"]     !Svensson!
+    input text                      xpath://*[@id="address"]      Järntorgetsgatan 22
+    input text                      xpath://*[@id="city"]         Göteborg
+    input text                      xpath://*[@id="telephone"]    0311111111
+    click button                    xpath://html/body/app-root/app-owner-edit/div/div/form/div[7]/div/button[2]
+    wait until page contains        Owner Information
 
 Then changes should reflect in the "Owners" list
   click button                    xpath://html/body/app-root/app-owner-detail/div/div/button[1]
@@ -139,7 +143,8 @@ Then changes should reflect in the "Owners" list
 
   # Change pet information
 Given that user has access to petclinic site
-   Verify Page Loaded
+
+   Go to Web Page
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
   wait until page contains        Owners
@@ -175,7 +180,7 @@ Then changes should reflect in the name field
   # Edit pet with empty name field
 
 Given that im on the landing page
-  Verify Page Loaded
+  Go to Web Page
 
 When l edit a pet
 

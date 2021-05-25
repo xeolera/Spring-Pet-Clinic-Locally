@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation                Testar Selenium och RobotFramework
 Resource                     ../Resources/keywords_pet.robot
+Resource                     ../Resources/keywords_general.robot
 Library                      SeleniumLibrary
 Test Setup                   Begin Web Test
 Test Teardown                End Web Test
@@ -26,9 +27,6 @@ Test to add a new pet
   And user input information to the pet
   When user clicks on “Save pet”
   Then the user will have succesfully added a new pet to the chosen owner
-
-
-
 
 Test to add a pet with numbers instead of letters
 
