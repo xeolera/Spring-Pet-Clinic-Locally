@@ -1,11 +1,8 @@
 *** Settings ***
 *** Keywords ***
-Begin Web Test
-    Open browser                     ${URL}    ${BROWSER}
-    Set selenium timeout             5
 
 Given User on the Infotiv PetClinic page
-     Wait until Page Contains          Welcome to Petclinic
+     Go to Web Page
 
 When User select the Owners with All option
      click element                     xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a/span
@@ -32,15 +29,11 @@ Then System shows Pet Types information with Home button and Add button
      Wait until Page Contains          Pet Types
      click element                     xpath://html/body/app-root/app-pettype-list/div/div/div/button[1]
 
-
-When User select the SPCIALITIES with All
+When User select the SPECIALITIES with All
      Wait Until Page Contains Element    xpath=(//span)[17]
      Click Element                       xpath=(//span)[17]
-
 
 Then System shows Specialities information with Home button and Add button
     Wait Until Page Contains Element    xpath=(//button[@class="btn btn-default"])[7]
     #Page should contain                   Specialties
 
-End Web Test
-   Close All Browsers

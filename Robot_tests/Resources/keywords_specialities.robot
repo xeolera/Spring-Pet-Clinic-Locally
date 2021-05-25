@@ -3,7 +3,6 @@
 *** Keywords ***
 
 Access Web Page && Verify Home Page Loaded
-
      Go to Web Page
 
 User Clicks Menu && Specialties Page Loaded
