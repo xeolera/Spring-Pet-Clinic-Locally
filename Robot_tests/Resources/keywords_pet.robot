@@ -182,7 +182,7 @@ Given that im on the landing page
 
 When l edit a pet
 
-    click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
+  click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
   wait until page contains        Owners
   click element                   xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[1]/td[1]/a
@@ -191,10 +191,11 @@ When l edit a pet
 
 And leave the name filed empty
 
-  input text                      xpath://*[@id="name"]
+  input text                      xpath://*[@id="name"]                                            12345
+  # Input Text förväntar sig text här. Det går inte att lämna fältet tomt. Det finns annan Robot Framework Keyword som kan testa ifall det är tomt som du kan kika på framöver.
 
 Then an error should occur
-   click element                   xpath://html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]
+  click element                   xpath://html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]
   wait until page contains        Pets and Visits
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a
   click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a
