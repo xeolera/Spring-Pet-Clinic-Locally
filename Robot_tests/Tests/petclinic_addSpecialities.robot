@@ -15,7 +15,6 @@ ${URL}              http://localhost:4200/
 User should be able to navigate to the Specialities page and check the existing specialities
     [Documentation]                 Verifying whether system displays the existing specialties or not
     [Tags]                          GD_411
-
     Access Web Page && Verify Home Page Loaded
     User Clicks Menu && Specialties Page Loaded
     System display the existing specialties
