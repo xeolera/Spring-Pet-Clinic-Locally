@@ -1,5 +1,4 @@
 *** Setting ***
-*** Setting ***
 Documentation                   This is some basic infor about the whole test suite
 Resource                           ../Resources/keyword_Visits_invalidDate.robot
 Resource                           ../Resources/keywords_general.robot
