@@ -7,12 +7,14 @@ Given User on the Infotiv PetClinic page
 
 When User select the Owners with All
      click element                              xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/a/span
-     Mouse Down                                 xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a/span
      click element                              xpath://html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a/span
-     Page should contain                        Owners
-     Wait until Page Contains                   Owners
+     Sleep                                      0.2
+     Wait until Page Contains Element           xpath://html/body/app-root/app-owner-list/div/div/h2
+     Page Should Contain                        Owners
      click element                              xpath://html/body/app-root/app-owner-list/div/div/div/table/tbody/tr[5]/td[1]/a
      page should contain                        Pets and Visits
+     #Removed 2 keywords here since they were repeated keywords - might be causing some trouble for jenkins.
+     #Added Sleep 0.2 to make sure the page loads and not being rushed to find the Click Element since sometimes it jumps over it.
 
 And Click on Addnew and User enters Invalid Dates and Description
      Wait until Page Contains                   Owner Information
