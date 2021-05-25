@@ -4,15 +4,12 @@ Documentation                   This is some basic infor about the whole test su
 Resource                           ../Resources/keyword_addvisits.robot
 Resource                           ../Resources/keywords_general.robot
 
-
-
 Library                            SeleniumLibrary
-Test Setup                         Open browser                     ${URL}    ${BROWSER}
+Test Setup                         Begin Web Test
 Test Teardown                      End Web Test
 *** Variables ***
 ${URL}                          http://localhost:4200/
 ${BROWSER}                      Chrome
-
 
 *** Test Cases ***
 User can add a new Visit
@@ -22,4 +19,4 @@ User can add a new Visit
         When User select the Owners with All
         And Click on Addnew and User enters valid Dates and Description
         Then System shows the added visits
-        End Web Test
+
