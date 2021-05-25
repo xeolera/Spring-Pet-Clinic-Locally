@@ -2,10 +2,9 @@
 *** Keywords ***
 Begin Web Test
     Open browser                     ${URL}    ${BROWSER}
-    Set selenium speed               1
     Set selenium timeout             5
 
-Access Web Page & Verify Home Page Loaded
+Access Web Page && Verify Home Page Loaded
      Wait until Page Contains          Welcome to Petclinic
 
 User Clicks Menu && Specialties Page Loaded

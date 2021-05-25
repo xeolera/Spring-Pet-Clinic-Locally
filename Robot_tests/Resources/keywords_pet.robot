@@ -39,9 +39,7 @@ Then the user will have succesfully added a new pet to the chosen owner
 #_____________________________________________________________________________________________________
 
 Given a user is on the landing page
-
     Go to Web Page
-    Set selenium speed          1
 
 When the user adds a pet with numbers in the name field
     Click element                   xpath://html/body/app-root/div[1]/nav/div/ul/li[4]/a/span[2]
