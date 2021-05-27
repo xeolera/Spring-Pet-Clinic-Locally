@@ -1,10 +1,12 @@
 *** Settings ***
+Library             SeleniumLibrary
+Resource            ../Resources/keywords_general.robot
 
 *** Keywords ***
 
 Access Web Page && Verify Home Page Loaded
-
      Go to Web Page
+     Page Should Contain                Welcome to Petclinic
 
 User Clicks Menu && Specialties Page Loaded
       page should contain               Specialties
@@ -30,3 +32,30 @@ System display the existing specialties
        page should contain               Specialties
        Wait until Page Contains          Specialties
 
+User Clicks Edit && Edit Specialty Loaded
+    Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[1]/td[2]/button[1]
+    Wait Until Page Contains            Edit Specialty
+
+Input Specialty name
+    [Arguments]                         ${search_term}
+    Input Text                          id:name             ${search_term}
+
+Abort edit && Verify Page
+    Click Button                        xpath://html/body/app-root/app-specialty-edit/div/div/form/div[2]/div/button[2]
+    Page Should Contain Element         xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[1]/td[1]/input
+
+User Clicks Save && Verify Save
+    Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/div[1]/app-specialty-add/div/div/form/div[2]/div/button
+    Page Should Contain Element         xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[1]/input
+
+User Clicks Update && Verify Update
+    Click Button                        xpath://html/body/app-root/app-specialty-edit/div/div/form/div[2]/div/button[1]
+    Page Should Contain Element         xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[1]/input
+
+User Clicks Delete && Verify Delete
+    Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[2]/button[2]
+    Page Should Not Contain Element     xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[1]/input
+
+User Clicks Delete && Verify No Deletion
+    Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[1]/td[2]/button[2]
+    Page Should Contain Element         xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[1]/td[1]/input
