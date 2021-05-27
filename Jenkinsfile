@@ -31,6 +31,17 @@ pipeline {
              }
         }
         
+        stage('JUnit testing') {
+            steps {
+                sh "mvn test"
+            }
+            post {
+                always {
+                    junit '**/TEST*.xml'
+                }
+            }  
+        }
+        
         stage('Robot Framework System tests with Selenium') {
             steps {
                 sh 'robot --variable BROWSER:headlesschrome -d Robot_tests/Results Robot_tests/Tests'
