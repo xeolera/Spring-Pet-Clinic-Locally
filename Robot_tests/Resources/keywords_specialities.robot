@@ -5,6 +5,7 @@ Resource            ../Resources/keywords_general.robot
 *** Keywords ***
 
 Access Web Page && Verify Home Page Loaded
+
      Go to Web Page
      Page Should Contain                Welcome to Petclinic
 
@@ -33,6 +34,7 @@ System display the existing specialties
        Wait until Page Contains          Specialties
 
 User Clicks Edit && Edit Specialty Loaded
+    Sleep                               0.5
     Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[1]/td[2]/button[1]
     Wait Until Page Contains            Edit Specialty
 
@@ -46,6 +48,7 @@ Abort edit && Verify Page
 
 User Clicks Save && Verify Save
     Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/div[1]/app-specialty-add/div/div/form/div[2]/div/button
+    Sleep                               0.5
     Page Should Contain Element         xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[1]/input
 
 User Clicks Update && Verify Update
@@ -54,6 +57,7 @@ User Clicks Update && Verify Update
 
 User Clicks Delete && Verify Delete
     Click Button                        xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[2]/button[2]
+    Sleep                               0.5
     Page Should Not Contain Element     xpath://html/body/app-root/app-specialty-list/div/div/table/tbody/tr[4]/td[1]/input
 
 User Clicks Delete && Verify No Deletion
