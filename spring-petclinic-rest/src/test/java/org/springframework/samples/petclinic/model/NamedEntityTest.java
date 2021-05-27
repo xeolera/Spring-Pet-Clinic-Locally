@@ -26,7 +26,7 @@ class NamedEntityTest {
     @Tag("GD-457")
     @DisplayName("Be able to fetch the name as expected")
     //Arrange
-    public void testgetName() {
+    public void testGetName() {
         NamedEntity entity = new NamedEntity();
         String expected = "Jyoti";
         //Act

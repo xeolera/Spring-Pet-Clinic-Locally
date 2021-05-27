@@ -27,7 +27,7 @@ class BaseEntityTest {
     @DisplayName("To test getId is as expected")
 
     //Arrange
-    public void testgetId() {
+    public void testGetId() {
         BaseEntity entity = new BaseEntity();
         Integer expected = 10;
         //Act
@@ -39,7 +39,7 @@ class BaseEntityTest {
     @Tag("GD-454")
     @DisplayName(" To test getId is null")
     //Arrange
-    public void testgetIdnull() {
+    public void testGetIdNull() {
         BaseEntity entity = new BaseEntity();
         //Act
         Integer expected = null;
@@ -47,12 +47,11 @@ class BaseEntityTest {
         Assertions.assertEquals(expected, entity.getId());
     }
 
-
     @Test
     @Tag("GD-456")
     @DisplayName(" To test the isNew returns a boolean")
         //Arrange
-    void testisNew() {
+    void testIsNew() {
         BaseEntity obj1 = new BaseEntity();
         obj1.setId(null);
         //Act
