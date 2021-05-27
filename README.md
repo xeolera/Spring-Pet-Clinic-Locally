@@ -1,37 +1,28 @@
-# ✨ Bulletin Board ✨
-Local server of Pet Clinic for future tests
+--English--
 
+This github is made for the Petclinic project, for group D in ITHS-software testing class of 2020. 
 
+The workflow for this github is that either branch is used for uploading changes that after each subtask is up to date and double checked they are merged into the main branch. The reason for using github for this is to coordinate the project between all the members of the project, considering the circumstances right now, using an online solution for sharing the files was needed but considering all the functions found in github it would very likely have been used either way. 
 
-HELLO HERE IS A PLACE FOR THE COLLECTION OF THOUGHTS
+The postman branch is used for uploading API-tests to the project page which is being developed using postman, hence the choice of the name. 
 
-BEAUTIFUL 
-***
+The next branch is called Robot_D where the webpage tests are being made; those tests are being made in PyCharm and ran using the IntelliBot plugin to run the test cases while the name choice follows the above pattern.
 
-***
-Svar från Vincent på nedanstående frågor:
-I jenkins pipelinescript kan man använda dir('min/mapp/struktur') för att byta directory. Man kan även använda ett simpelt 'sh cd min/mapp/struktur'.
+The final branch is jUnit which are jUnit test developed with IntelliJ using the programming language of java. 
 
-Det skall finnas instruktioner för webhooks i Jenkinsövningen. Har ni testat att följa dem?
+The main branch is where the Jenkins files are which are used for running all the tests together using Jenkins, mostly using the server we have gotten access to from our project owners but also local ones. We decided to use 3 different Jenkins files to test different things; the first one is for testing the most essential test cases in all of the test areas. The second is for more odd inputs such as numbers outside the expected intervals and symbols that are not expected such as number in names. The final jenkinsfile is testing a full run-through of the webpage of creating an owner, pet linked to said owner and booking a visit to a veterinary on the webpage. 
 
--translation-
+ 
+-- Svenska --
 
-Answer from Vincent regarding questions below: In jenkins pipelinescript you can use dir('my/folder/structure') to change directory. You can also use a simple 'sh cd my/folder/structure'
+Denna Github är gjorde för Petclinic projektet, denna är för grupp D i mjukvarutestarna 2020 på ITHS.  
 
-There are instructions for webhooks in the Jenkins excersice (on ITHS). Try following it? 
-***
+Vi har 3 olika grenar i projektet, som används för olika delar av projektet och sedan sammanfogas med huvudgrenen. Valet att använda github blev mer givet på grund av samhällssituation som är just nu som kräver en gemensam arbetsyta online för att dela filer med samtliga gruppmedlemmar, men med tanke på alla funktioner som github har att erbjuda så hade den med största sannolikhet varit valet även under normala förutsättningar. 
 
-Skickat till Vincent 20/4
-Hej Vincent, lite teknikfrågor från grupp D!
+Våra tre olika grenar börjar med Postman som används för att göra API-tester i programmet Postman, vilket vi valde att använda som namn på grenen för att hålla det tydligt vad som tillhör vad. 
 
-Nu tror vi att vi har fått vårt repo att fungera mot Jenkins men vi vet inte hur får vi jenkinsfilen att se in djupare i de andra mapparna. Vi lyckas inte bygga nämligen.  
-När vi kör två repo tror vi att vi lyckas bygga men inte när vi kör ett repo. Finns det möjlighet att få handledning i det innan torsdag? Är lite svårt att formulera i text. 
-(Now when 1 repo works, how can we get the Jenkinsfile to see deeper into the different folders? We manage to build when we made 2 repos.)
+Den andra grenen är Robot_D som används för robottesterna som provar webbplatsens olika funktioner genom roboten intellibot som är ett plugin till PyCharm som har varit vår valda utvecklingsmiljö för dessa tester. 
 
-En annan fråga är även gällande build triggers, är det möjligt att få det att fungera när man kör Jenkins lokalt, för det får vi inte att fungera (än).  Eller behöver det vara när man kör Jenkins på nätet? Vi får det inte att fungera på ithsjenkins heller, då vi inte kommer åt admininställningar, med webhooks från Jenkins. 
-(Regarding build triggers, how to make it work, doesn't work locally or in ithsjenkins (yet), we don't have access to settings regarding webhooks from Jenkins)
-***
+Den sista grenen är jUnit som är tester skrivna i java genom att använda IntelliJ. 
 
-
-
-By Group D - Trevligt team, snyggt.
+Main är huvudgrenen, där har vi jenkinsfiler som används tillsammans med butlerprogrammet Jenkins som automatiskt genomför våra tester med jämna mellanrum samt när vi väljer att manuellt köra testerna. Vi har 3 olika jenkinsfiler, den första används för att köra de mest nödvändiga testerna i samtliga testområden. Den andra jenkinsfilen kör tester som är mer lustiga, i det inkluderas att mata in tecken som inte förväntas samt siffror utanför det förväntade intervallen. Den sista är för att prova en fullständig genomkörning av att skapa en ägare, ett tillhörande husdjur och boka en tid för detta husdjur hos en veterinär på hemsidan. 
