@@ -13,6 +13,13 @@ pipeline {
                 sleep(3)
                   }
            }
+        
+        stage('Build JUnit2') {
+            steps {
+                sh 'cd spring-petclinic-rest && mvn compile &'
+
+            }
+        }
       
          stage('Postman testing') {
             steps { 
@@ -31,15 +38,16 @@ pipeline {
              }
         }
         
-        stage('JUnit testing') {
+        stage('JUnit2') {
             steps {
-                sh "mvn test"
+            		sh 'cd spring-petclinic-rest && mvn test'
+            	}
             }
             post {
-                always {
-                    junit '**/TEST*.xml'
-                }
-            }  
+            	always {
+            		junit '**/target/surefire-reports/TEST*.xml'
+            	}
+            }
         }
         
         stage('Robot Framework System tests with Selenium') {
