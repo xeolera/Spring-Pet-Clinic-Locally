@@ -14,7 +14,7 @@ pipeline {
                   }
            }
         
-        stage('Build JUnit2') {
+        stage('Build JUnit') {
             steps {
                 sh 'cd spring-petclinic-rest && mvn compile &'
 
@@ -38,17 +38,16 @@ pipeline {
              }
         }
         
-        stage('JUnit2') {
+        stage('JUnit testing') {
             steps {
             		sh 'cd spring-petclinic-rest && mvn test'
-            	}
-            
+            	}     
             post {
             	always {
             		junit '**/*.xml'
             	}
             }
-        }
+        }   
         
         stage('Robot Framework System tests with Selenium') {
             steps {
