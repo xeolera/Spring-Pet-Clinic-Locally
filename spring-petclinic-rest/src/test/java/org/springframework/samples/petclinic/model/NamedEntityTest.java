@@ -1,18 +1,32 @@
 package org.springframework.samples.petclinic.model;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class NamedEntityTest {
+    @BeforeAll
+    static void setup() {
+        System.out.println("Starting testsuite");
+    }
+    @BeforeEach
+    void setupEach(TestInfo testInfo) {
+        System.out.println("Test starts - " + testInfo.getDisplayName() + " " +  testInfo.getTags());
+    }
+    @AfterEach
+    void tearDownEach(TestInfo testInfo) {
+        System.out.println("Closing test - " + testInfo.getDisplayName() + " " + testInfo.getTags());
+    }
+    @AfterAll
+    static void tearDown() {
+        System.out.println("Closing testsuite");
+    }
+
     @Test
     @Tag("GD-457")
     @DisplayName("Be able to fetch the name as expected")
     //Arrange
-    public void testgetName() {
+    public void testGetName() {
         NamedEntity entity = new NamedEntity();
         String expected = "Jyoti";
         //Act

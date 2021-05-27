@@ -1,19 +1,33 @@
 package org.springframework.samples.petclinic.model;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BaseEntityTest {
+    @BeforeAll
+    static void setup() {
+        System.out.println("Starting testsuite");
+    }
+    @BeforeEach
+    void setupEach(TestInfo testInfo) {
+        System.out.println("Test starts - " + testInfo.getDisplayName() + " " +  testInfo.getTags());
+    }
+    @AfterEach
+    void tearDownEach(TestInfo testInfo) {
+        System.out.println("Closing test - " + testInfo.getDisplayName() + " " + testInfo.getTags());
+    }
+    @AfterAll
+    static void tearDown() {
+        System.out.println("Closing testsuite");
+    }
 
     @Test
     @Tag("GD-453")
     @DisplayName("To test getId is as expected")
+
     //Arrange
-    public void testgetId() {
+    public void testGetId() {
         BaseEntity entity = new BaseEntity();
         Integer expected = 10;
         //Act
@@ -25,7 +39,7 @@ class BaseEntityTest {
     @Tag("GD-454")
     @DisplayName(" To test getId is null")
     //Arrange
-    public void testgetIdnull() {
+    public void testGetIdNull() {
         BaseEntity entity = new BaseEntity();
         //Act
         Integer expected = null;
@@ -33,12 +47,11 @@ class BaseEntityTest {
         Assertions.assertEquals(expected, entity.getId());
     }
 
-
     @Test
     @Tag("GD-456")
     @DisplayName(" To test the isNew returns a boolean")
         //Arrange
-    void testisNew() {
+    void testIsNew() {
         BaseEntity obj1 = new BaseEntity();
         obj1.setId(null);
         //Act
