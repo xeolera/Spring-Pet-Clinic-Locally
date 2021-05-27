@@ -38,17 +38,6 @@ pipeline {
              }
         }
         
-        stage('JUnit testing') {
-            steps {
-            		sh 'cd spring-petclinic-rest && mvn test'
-            	}     
-            post {
-            	always {
-            		junit '**/*.xml'
-            	}
-            }
-        }   
-        
         stage('Robot Framework System tests with Selenium') {
             steps {
                 sh 'robot --variable BROWSER:headlesschrome -d Robot_tests/Results Robot_tests/Tests'
