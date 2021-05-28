@@ -14,13 +14,6 @@ pipeline {
                   }
            }
         
-        stage('Build JUnit') {
-            steps {
-                sh 'cd spring-petclinic-rest && mvn compile &'
-
-            }
-        }
-        
         stage('JUnit testing') {
             steps {
             		sh 'cd spring-petclinic-rest/src/test/java/org/springframework/samples/petclinic/model && mvn test'
@@ -32,7 +25,6 @@ pipeline {
             }
         }
 
-      
          stage('Postman testing') {
             steps { 
                 script {
@@ -48,13 +40,6 @@ pipeline {
                      junit '**/*.xml'
                  }
              }
-        }
-        
-         stage('Build JUnit 2') {
-            steps {
-                sh 'cd spring-petclinic-rest && mvn compile &'
-
-            }
         }
         
         stage('Robot Framework System tests with Selenium') {
