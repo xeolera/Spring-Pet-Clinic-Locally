@@ -127,7 +127,7 @@ public class OwnerTest {
 
     @Test
     @Tag("GD-469")
-    @DisplayName("Test  to ")
+    @DisplayName("Test to add  Pet of  the owner")
     //Arrange
     public void testAddPet() {
         Owner owner = new Owner();
