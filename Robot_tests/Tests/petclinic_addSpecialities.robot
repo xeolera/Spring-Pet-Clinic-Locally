@@ -10,6 +10,7 @@ Test Teardown                       End Web Test
 ${BROWSER}          chrome
 ${URL}              http://localhost:4200/
 
+
 *** Test Cases ***
 
 User should be able to navigate to the Specialities page and check the existing specialities
@@ -22,7 +23,6 @@ User should be able to navigate to the Specialities page and check the existing 
 Add a speciality in the Petclinic application through Robot framework
     [Documentation]                 Verifying that a user can add speciality
     [Tags]                          GD_388
-
     Access Web Page && Verify Home Page Loaded
     User Clicks Menu && Specialties Page Loaded
     User Clicks Add && Specialties Division Loaded
