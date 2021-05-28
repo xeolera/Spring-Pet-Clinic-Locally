@@ -20,6 +20,18 @@ pipeline {
 
             }
         }
+        
+        stage('JUnit testing') {
+            steps {
+            		sh 'cd spring-petclinic-rest/src/test/java/org/springframework/samples/petclinic/model && mvn test'
+            	}     
+            post {
+            	always {
+            		junit '**/*.xml'
+            	}
+            }
+        }
+
       
          stage('Postman testing') {
             steps { 
