@@ -21,16 +21,7 @@ pipeline {
             }
         }
         
-        stage('JUnit testing') {
-            steps {
-            		sh 'cd spring-petclinic-rest && mvn -Dtest="spring-petclinic-rest.src.test.java.org.springframework.samples.petclinic.model.**" test'
-            	}     
-            post {
-            	always {
-            		junit '**/target/surefire-reports/TEST-*.xml'
-            	}
-            }
-        }
+       
 
          stage('Postman testing') {
             steps { 
