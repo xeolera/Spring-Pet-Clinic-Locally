@@ -50,13 +50,6 @@ pipeline {
              }
         }
         
-         stage('Build JUnit') {
-            steps {
-                sh 'cd spring-petclinic-rest && mvn compile &'
-
-            }
-        }
-        
         stage('Robot Framework System tests with Selenium') {
             steps {
                 sh 'robot --variable BROWSER:headlesschrome -d Robot_tests/Results Robot_tests/Tests'
