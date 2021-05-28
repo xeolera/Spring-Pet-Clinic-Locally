@@ -23,7 +23,7 @@ pipeline {
         
         stage('JUnit testing') {
             steps {
-            		sh 'cd spring-petclinic-rest && mvn test'
+            		sh 'cd spring-petclinic-rest && mvn test/spring-petclinic-rest/src/test/java/org/springframework/samples/petclinic/model'
             	}     
             post {
             	always {
