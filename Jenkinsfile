@@ -31,15 +31,11 @@ pipeline {
              }
         }
         
-        stage('JUnit testing') {
+         stage('Build JUnit') {
             steps {
-                sh "mvn test"
+                sh 'cd spring-petclinic-rest && mvn compile &'
+
             }
-            post {
-                always {
-                    junit '**/TEST*.xml'
-                }
-            }  
         }
         
         stage('Robot Framework System tests with Selenium') {
